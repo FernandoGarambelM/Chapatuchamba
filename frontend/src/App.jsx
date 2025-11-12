@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import api from './services/api'
 import './App.css'
+import logo from './assets/logo.png'
 
 function App() {
   const [apiStatus, setApiStatus] = useState({ loading: true, data: null, error: null })
@@ -20,6 +21,9 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8">
+        <div className="flex items-center justify-center mb-6">
+          <img src={logo} alt="Chapatuchamba Logo" className="w-32 h-32 object-contain" />
+        </div>
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
           🚀 Chapatuchamba
         </h1>
