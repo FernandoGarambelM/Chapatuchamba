@@ -17,14 +17,14 @@ export default function Index() {
               <span className="text-white text-lg font-bold tracking-wide">CHAPA TU CHAMBA</span>
             </a>
             <div className="hidden md:flex items-center space-x-6">
-              <a className="text-white hover:text-[#FFC72C] transition-colors duration-300" href="#">Cursos</a>
-              <a className="text-white hover:text-[#FFC72C] transition-colors duration-300" href="#">Retos</a>
-              <a className="text-white hover:text-[#FFC72C] transition-colors duration-300" href="#">Publica un Reto</a>
+              <a className="text-white hover:text-[#FFC72C] transition-colors duration-300" href="/courses">Cursos</a>
+              <a className="text-white hover:text-[#FFC72C] transition-colors duration-300" href="/challenges">Retos</a>
+              <a className="text-white hover:text-[#FFC72C] transition-colors duration-300" href="/challenges/create">Publica un Reto</a>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <a className="bg-[#0F2C4E] text-white px-4 py-2 rounded-lg border border-white hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300" href="#">Iniciar Sesión</a>
-            <a className="bg-[#FFC72C] text-[#0F2C4E] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300" href="#">Registrarse</a>
+            <a className="bg-[#0F2C4E] text-white px-4 py-2 rounded-lg border border-white hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300" href="/login">Iniciar Sesión</a>
+            <a className="bg-[#FFC72C] text-[#0F2C4E] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300" href="/signup">Registrarse</a>
           </div>
           <div className="md:hidden">
             <button className="text-white">
