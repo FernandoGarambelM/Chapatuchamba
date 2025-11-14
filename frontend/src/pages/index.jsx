@@ -1,5 +1,8 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import llamaFeliz from "../assets/LLAMA FELIZ.png";
+import llamaPensativa from "../assets/llama pensativa.png";
+import llamita from "../assets/LLAMITA.png";
 
 export default function Index() {
   return (
@@ -50,7 +53,7 @@ export default function Index() {
             </div>
             <div className="relative flex justify-center items-center">
               <div className="absolute bg-[#FFC72C] rounded-full w-72 h-72 md:w-96 md:h-96 lg:w-[480px] lg:h-[480px]"></div>
-              <img alt="Llama sonriente con un casco de construcción amarillo" className="relative z-10 w-64 md:w-80 lg:w-[420px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYQu3JvELD9Kf3kY7tWfm_8op8OkHELX-cdewOAug9Ai-KgIqSM4z3tG-Etwh-9gXz-oS6kRuGtQP6xQFzBAFCG4PKeo0IyzHFYwXoa-NrZrBLGMWTyszJNA9R7G9pFeF3vpZUlbSvYbgiWpEjoVka4qF96kvt497lUJ-fRGfRxnoE0eVpaVqPWJrFxUUrG5GNk-wVIUqbZJrNHIxUuUri-TQ8AHIc_xKGLjlo4yc4ywCszJjorze95fFiGqtPvMzJbobafK9dSY6k" />
+              <img alt="Llama sonriente con un casco de construcción amarillo" className="relative z-10 w-64 md:w-80 lg:w-[420px]" src={llamaFeliz} />
             </div>
           </div>
         </section>
@@ -62,7 +65,7 @@ export default function Index() {
                 <h3 className="text-white text-2xl font-semibold">¿Cómo funciona?</h3>
                 <h2 className="text-[#FFC72C] text-4xl md:text-5xl font-extrabold">Este es el proceso</h2>
               </div>
-              <img alt="Llama pequeña con un signo de interrogación" className="h-16 mb-2 hidden sm:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIe24PDBCPwKVEwBvnxstNJTAYjiwSmjeBxW3mEZ6QzoyEzWIUBNq36GvfAdXRORr0L9dPxOkGiVD3Ujkk-5FdOI9x5OO6G9McS_z9LgDhJ1NcIBOkGxopPZEK20VSa3jJL1emdC7Ig9yFe9I-18IWbOWLD6Iii62SGjSYnt5HrrMYvYPTthbHVzfGa7o1c7X31HUJO2i8XXWWKfS9fLEriSB_HaSRqa9ho2b7qCqHGZ00Cuq-26RV20f70-oPokZcsSJy-q6cFqgh" />
+              <img alt="Llama pequeña con un signo de interrogación" className="h-16 mb-2 hidden sm:block" src={llamaPensativa} />
             </div>
             <div className="mt-16 grid lg:grid-cols-2 gap-16">
               <div>
@@ -136,12 +139,12 @@ export default function Index() {
         <section className="bg-white py-20">
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center items-end gap-4 mb-12">
-              <img alt="Llama pequeña mirando hacia arriba" className="h-16 mb-2 hidden sm:block transform scale-x-[-1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbKbYeN5lmtPuZJk5Qbsl4-_NxpzlRcVv0119aFr2lXv3RpiIVzuYqquewNETMSDtFZd__5HNYBeNzJ9zWNUB8b7ijsQcLU1SBEzn77qZFdiuUspqWkf5SJ-xgiwwP0Anrfqvk6UQYblKonqavOBXz7xnCi01nQBOEk7M8cVynyM2s-F23iLyej6xVYhE1f0DJGI-DNulR8ie0i1GuYmxIGDtU-RdyMOq8htXhZsOeWatNjDslNtkS3UuHLuH_zJ4VvKjdYEgEQt0h" />
+              <img alt="Llama pequeña mirando hacia arriba" className="h-16 mb-2 hidden sm:block transform scale-x-[-1]" src={llamita} />
               <div>
                 <h3 className="text-2xl font-semibold text-gray-500">Explora Oportunidades</h3>
                 <h2 className="text-[#FFC72C] text-4xl md:text-5xl font-extrabold">Retos Recientes</h2>
               </div>
-              <img alt="Llama pequeña mirando hacia arriba" className="h-16 mb-2 hidden sm:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBARLSLNwZUnL5UnBV_z-jyaUvrH5XDagnzfGdDjy_9kXy0KrBub6CX0yIxVT1Q8vzewtwW0Ze9Uv_jJKyfT2EjAj_IteFqs293anVgld1z1-71OZ42wdR8gC4RQWszJii1oVjs0BAmug8DxmjclRb3ocvSyjYKK-1C_m6U1ohj07q-MECD0aCJQDALGhAepa5afkvQGYTom-7VuGoBpalRufK4OYXRzutAVmzQwq4khK9OpVKwZhBcSi6O-j-BrMNap7rRSD2oxnTP" />
+              <img alt="Llama pequeña mirando hacia arriba" className="h-16 mb-2 hidden sm:block" src={llamita} />
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((item) => (
