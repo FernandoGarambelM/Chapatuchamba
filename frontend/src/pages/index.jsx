@@ -113,7 +113,7 @@ export default function Index() {
                 <h4 className="text-white text-3xl font-bold mb-8">Para los Estudiantes</h4>
                 <div className="grid sm:grid-cols-3 gap-8">
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-white flex items-center justify-center mb-4">
+                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-[#FFC72C] flex items-center justify-center mb-4">
                       <svg className="text-[#0F2C4E] text-5xl w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                       </svg>
@@ -122,7 +122,7 @@ export default function Index() {
                     <p className="text-white/80 mt-2 text-sm">Crea tu perfil y sube tus habilidades</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-white flex items-center justify-center mb-4">
+                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-[#FFC72C] flex items-center justify-center mb-4">
                       <svg className="text-[#0F2C4E] w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                       </svg>
@@ -131,7 +131,7 @@ export default function Index() {
                     <p className="text-white/80 mt-2 text-sm">Explora los retos y elige el que te apasione</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-white flex items-center justify-center mb-4">
+                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-[#FFC72C] flex items-center justify-center mb-4">
                       <svg className="text-[#0F2C4E] w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                       </svg>
@@ -145,7 +145,7 @@ export default function Index() {
                 <h4 className="text-white text-3xl font-bold mb-8">Para las Empresas</h4>
                 <div className="grid sm:grid-cols-3 gap-8">
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-white flex items-center justify-center mb-4">
+                    <div className="w-24 h-24 rounded-full border-4 border-white bg-white flex items-center justify-center mb-4">
                       <svg className="text-[#0F2C4E] w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
@@ -154,7 +154,7 @@ export default function Index() {
                     <p className="text-white/80 mt-2 text-sm">Llega a una red de talento joven y motivado</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-white flex items-center justify-center mb-4">
+                    <div className="w-24 h-24 rounded-full border-4 border-white bg-white flex items-center justify-center mb-4">
                       <svg className="text-[#0F2C4E] w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                       </svg>
@@ -163,7 +163,7 @@ export default function Index() {
                     <p className="text-white/80 mt-2 text-sm">Recibe propuestas innovadoras y creativas</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full border-4 border-[#FFC72C] bg-white flex items-center justify-center mb-4">
+                    <div className="w-24 h-24 rounded-full border-4 border-white bg-white flex items-center justify-center mb-4">
                       <svg className="text-[#0F2C4E] w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                       </svg>
@@ -180,12 +180,18 @@ export default function Index() {
         <section className="bg-white py-20">
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center items-end gap-4 mb-12">
-              <img alt="Llama pequeña mirando hacia arriba" className="h-16 mb-2 hidden sm:block transform scale-x-[-1]" src={llamita} />
+              <div className="relative hidden sm:flex justify-center items-center">
+                <div className="absolute bg-[#FFC72C] rounded-full w-20 h-20"></div>
+                <img alt="Llama pequeña mirando hacia arriba" className="relative z-10 h-16 mb-2 transform scale-x-[-1]" src={llamita} />
+              </div>
               <div>
                 <h3 className="text-2xl font-semibold text-gray-500">Explora Oportunidades</h3>
                 <h2 className="text-[#FFC72C] text-4xl md:text-5xl font-extrabold">Retos Recientes</h2>
               </div>
-              <img alt="Llama pequeña mirando hacia arriba" className="h-16 mb-2 hidden sm:block" src={llamita} />
+              <div className="relative hidden sm:flex justify-center items-center">
+                <div className="absolute bg-[#FFC72C] rounded-full w-20 h-20"></div>
+                <img alt="Llama pequeña mirando hacia arriba" className="relative z-10 h-16 mb-2" src={llamita} />
+              </div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((item) => (
