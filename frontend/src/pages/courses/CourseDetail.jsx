@@ -46,28 +46,28 @@ export default function CourseDetail() {
               Ciencia de Datos <br />con Python
             </h1>
           </div>
-          <div className="mt-8 md:mt-0">
+          <div className="mt-8 md:mt-0 flex items-center justify-center">
             <img 
               alt="Python language logo" 
-              className="h-24 w-24 md:h-32 md:w-32" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbhNcIJG_p03BO3zw9x5ci4QehJQjUcH9Dwa_k3rAFKZf3ELW6OSpIXW1bzrRTHhV1DlZu2lRlMuP45ViEFMeU3a1g9XdmbFmlmjjasqzMQ2z2fVZ49Olrk_FQGX94VjvioXX1lYAQdfKYsV9o7Nqt_wjp0R9btlHZrSLqh_S1QAN6yu8VORiAlHolS9tEE-O5EJPlUt-Fxr42MN9NtWesKOOK41eOkPV8OOpzLlBwENC3jd7jG5LsnJL_MaMc_NUZM9ovqtcEhHOr"
+              className="h-32 w-32 md:h-40 md:w-40 object-contain" 
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
             />
           </div>
         </section>
 
         <div className="space-y-1">
-          <div className="border-b border-[#E5E5E5] dark:border-gray-700">
+          <div className="border-b border-[#E5E5E5]">
             <button 
               onClick={() => toggleAccordion(1)} 
               className="w-full flex justify-between items-center py-6 text-left"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-[#FFC72C]/80 rounded-full flex-shrink-0"></div>
-                <span className="font-semibold text-lg text-[#0F2C4E] dark:text-white">
+                <div className="w-12 h-12 bg-[#FFC72C] rounded-full flex-shrink-0"></div>
+                <span className="font-semibold text-lg text-[#0F2C4E]">
                   Fundamentos de Programación con Python
                 </span>
               </div>
-              <span className={`material-icons text-[#0F2C4E] dark:text-gray-400 transition-transform duration-300 ${openAccordion === 1 ? 'rotate-180' : ''}`}>
+              <span className={`material-icons text-[#0F2C4E] transition-transform duration-300 ${openAccordion === 1 ? 'rotate-180' : ''}`}>
                 expand_more
               </span>
             </button>
@@ -89,9 +89,9 @@ export default function CourseDetail() {
                   <div className="bg-red-500 w-8 h-8 rounded-md flex items-center justify-center">
                     <span className="material-icons text-white text-xl">picture_as_pdf</span>
                   </div>
-                  <span className="text-gray-600 dark:text-gray-300">Descarga Material/PDF</span>
+                  <span className="text-gray-700">Descarga Material/PDF</span>
                 </div>
-                <div className="text-gray-500 dark:text-gray-400 space-y-2">
+                <div className="text-gray-600 space-y-2">
                   <p>Variables y Tipos de Datos: Python es un lenguaje dinámico lo que significa que no es necesario declarar el tipo de una variable. Se pueden utilizar variables de diferentes tipos:</p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li>Enteros(int): x = 5</li>
@@ -110,16 +110,16 @@ export default function CourseDetail() {
             { id: 4, title: "Operadores Básicos y Manejo de Cadena" },
             { id: 5, title: "Uso de Selectivas" }
           ].map(section => (
-            <div key={section.id} className="border-b border-[#E5E5E5] dark:border-gray-700">
+            <div key={section.id} className="border-b border-[#E5E5E5]">
               <button 
                 onClick={() => toggleAccordion(section.id)} 
                 className="w-full flex justify-between items-center py-6 text-left"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#FFC72C]/80 rounded-full flex-shrink-0"></div>
-                  <span className="font-semibold text-lg text-[#0F2C4E] dark:text-white">{section.title}</span>
+                  <div className="w-12 h-12 bg-[#FFC72C] rounded-full flex-shrink-0"></div>
+                  <span className="font-semibold text-lg text-[#0F2C4E]">{section.title}</span>
                 </div>
-                <span className={`material-icons text-[#0F2C4E] dark:text-gray-400 transition-transform duration-300 ${openAccordion === section.id ? 'rotate-180' : ''}`}>
+                <span className={`material-icons text-[#0F2C4E] transition-transform duration-300 ${openAccordion === section.id ? 'rotate-180' : ''}`}>
                   expand_more
                 </span>
               </button>
@@ -137,22 +137,22 @@ export default function CourseDetail() {
         </div>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-bold text-[#0F2C4E] dark:text-white mb-6">Ponte a Prueba</h2>
+          <h2 className="text-3xl font-bold text-[#0F2C4E] mb-6">Ponte a Prueba</h2>
           <div className="space-y-1">
             {[
               { id: 1, title: "Practica: Operadores y Tipos de Datos" },
               { id: 2, title: "Practica: Selectivas" }
             ].map(practice => (
-              <div key={practice.id} className="border-b border-[#E5E5E5] dark:border-gray-700">
+              <div key={practice.id} className="border-b border-[#E5E5E5]">
                 <button 
                   onClick={() => togglePractice(practice.id)} 
                   className="w-full flex justify-between items-center py-6 text-left"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-[#FFC72C]/80 rounded-full flex-shrink-0"></div>
-                    <span className="font-semibold text-lg text-[#0F2C4E] dark:text-white">{practice.title}</span>
+                    <div className="w-12 h-12 bg-[#FFC72C] rounded-full flex-shrink-0"></div>
+                    <span className="font-semibold text-lg text-[#0F2C4E]">{practice.title}</span>
                   </div>
-                  <span className={`material-icons text-[#0F2C4E] dark:text-gray-400 transition-transform duration-300 ${openPractice === practice.id ? 'rotate-180' : ''}`}>
+                  <span className={`material-icons text-[#0F2C4E] transition-transform duration-300 ${openPractice === practice.id ? 'rotate-180' : ''}`}>
                     expand_more
                   </span>
                 </button>
