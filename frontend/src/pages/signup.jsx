@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import llamaFeliz from '../assets/LLAMA FELIZ.png'
 
 export default function Signup() {
@@ -53,14 +54,14 @@ export default function Signup() {
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif' }} className="min-h-screen bg-white p-6 flex items-center justify-center relative">
       {/* Flecha de regreso */}
-      <a 
-        href="/" 
+      <Link 
+        to="/" 
         className="absolute top-6 left-6 p-2 bg-[#0F2C4E] text-white rounded-full hover:bg-[#0F2C4E]/90 transition-all duration-300 transform hover:scale-110 z-10"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
-      </a>
+      </Link>
 
       <div className="bg-white border-2 border-[#0F2C4E] shadow-lg rounded-2xl p-8 w-full max-w-md">
         {/* Logo y título */}
@@ -216,9 +217,9 @@ export default function Signup() {
         <div className="mt-8 text-center">
           <p className="text-[#0F2C4E]/80">
             ¿Ya tienes cuenta?{' '}
-            <a href="/login" className="font-medium text-[#0F2C4E] hover:text-[#FFC72C] transition-colors">
+            <Link to="/login" className="font-medium text-[#0F2C4E] hover:text-[#FFC72C] transition-colors">
               Inicia sesión aquí
-            </a>
+            </Link>
           </p>
         </div>
 

@@ -4,6 +4,7 @@ import llamaPensativa from "../assets/llama pensativa.png";
 import llamita from "../assets/LLAMITA.png";
 import Header from "../components/Header";
 import logo from '../assets/logo.png';
+import { Link } from "react-router-dom";
 export default function Index() {
   const [user, setUser] = useState(null);
 
@@ -35,8 +36,8 @@ export default function Index() {
                 Aprende lo que el mercado tecnológico realmente necesita y prepárate para la revolución tecnológica con nosotros
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a className="bg-[#FFC72C] text-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105" href="#">Ver Retos</a>
-                <a className="bg-white text-[#0F2C4E] border-2 border-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg hover:bg-[#0F2C4E] hover:text-white transition-colors duration-300" href="#">Publicar un Reto</a>
+                <Link className="bg-[#FFC72C] text-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105" to="/challenges">Ver Retos</Link>
+                <Link className="bg-white text-[#0F2C4E] border-2 border-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg hover:bg-[#0F2C4E] hover:text-white transition-colors duration-300" to="/challenges/form">Publicar un Reto</Link>
               </div>
             </div>
             <div className="relative flex justify-center items-center">
@@ -154,12 +155,12 @@ export default function Index() {
                     <span className="bg-[#FFC72C] text-[#0F2C4E] text-xs font-semibold px-3 py-1 rounded-full">Empresarial</span>
                     <span className="bg-[#D1FAE5] text-[#0F2C4E] text-xs font-semibold px-3 py-1 rounded-full">Predicción</span>
                   </div>
-                  <a className="mt-auto bg-[#0F2C4E] text-white text-center py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-300" href="#">Ver más</a>
+                  <Link className="mt-auto bg-[#0F2C4E] text-white text-center py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-300" to="/challenges">Ver más</Link>
                 </div>
               ))}
             </div>
             <div className="mt-12">
-              <a className="bg-[#FFC72C] text-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block" href="#">Ver más Retos</a>
+              <Link className="bg-[#FFC72C] text-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block" to="/challenges">Ver más Retos</Link>
             </div>
           </div>
         </section>
@@ -169,7 +170,7 @@ export default function Index() {
             <h2 className="text-3xl md:text-4xl font-bold text-white max-w-3xl mx-auto leading-snug">¿Listo para aprender de tech o encontrar el talento que necesitas?</h2>
             <p className="text-white/80 italic mt-6 text-lg">"La educación es el motor del desarrollo de un país." - Pedro Paulet</p>
             <div className="mt-10">
-              <a className="bg-[#FFC72C] text-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block" href="#">Registrarse</a>
+              <Link className="bg-[#FFC72C] text-[#0F2C4E] px-8 py-3 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block" to="/signup">Registrarse</Link>
             </div>
           </div>
         </section>

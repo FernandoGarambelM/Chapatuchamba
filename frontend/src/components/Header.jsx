@@ -4,6 +4,7 @@ import logo from '../assets/logo.png';
 
 export default function Header() {
   const [user, setUser] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedUser = localStorage.getItem('chapatuchamba_user');
@@ -14,6 +15,10 @@ export default function Header() {
     localStorage.removeItem('chapatuchamba_user');
     setUser(null);
     window.location.href = '/';
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -65,13 +70,96 @@ export default function Header() {
         </div>
 
         <div className="md:hidden">
-          <button className="text-white">
+          <button onClick={toggleMobileMenu} className="text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} 
+              />
             </svg>
           </button>
         </div>
       </nav>
+
+      {/* Menú móvil */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-[#0F2C4E] border-t border-white/10">
+          <div className="px-6 py-4 space-y-4">
+            {/* Enlaces de navegación */}
+            <div className="space-y-3">
+              <Link 
+                className="block text-white hover:text-[#FFC72C] transition-colors duration-300 py-2" 
+                to="/courses"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Cursos
+              </Link>
+              <Link 
+                className="block text-white hover:text-[#FFC72C] transition-colors duration-300 py-2" 
+                to="/challenges"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Retos
+              </Link>
+              <Link 
+                className="block text-white hover:text-[#FFC72C] transition-colors duration-300 py-2" 
+                to="/challenges/form"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Publica un Reto
+              </Link>
+            </div>
+
+            {/* Usuario o botones de auth */}
+            <div className="pt-4 border-t border-white/10">
+              {user ? (
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 bg-white/10 px-4 py-3 rounded-lg">
+                    <div className="w-8 h-8 bg-[#FFC72C] rounded-full flex items-center justify-center">
+                      <span className="text-[#0F2C4E] font-bold text-sm">
+                        {user.firstName ? user.firstName[0].toUpperCase() : (user.name ? user.name[0].toUpperCase() : '?')}
+                      </span>
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-white font-medium block">
+                        {user.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : user.name}
+                      </span>
+                      <span className="text-[#FFC72C] text-xs">
+                        {user.userType || 'Usuario'}
+                      </span>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={handleLogout}
+                    className="w-full bg-red-600 text-white px-4 py-3 rounded-lg hover:bg-red-700 transition-colors duration-300"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <Link 
+                    className="block w-full text-center bg-[#0F2C4E] text-white px-4 py-3 rounded-lg border border-white hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300" 
+                    to="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Iniciar Sesión
+                  </Link>
+                  <Link 
+                    className="block w-full text-center bg-[#FFC72C] text-[#0F2C4E] px-4 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300" 
+                    to="/signup"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Registrarse
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
