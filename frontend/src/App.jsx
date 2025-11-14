@@ -8,9 +8,12 @@ import Index from './pages/index'
 import Login from './pages/login'
 import SignUp from './pages/signup'
 import Courses from './pages/courses'
+import CourseDetail from './pages/courses/CourseDetail'
 import CreateCourse from './pages/courses/addCourse'
 import Challenges from './pages/challenges'
+import ChallengeForm from './pages/challenges/ChallengeForm'
 import CreateChallenge from './pages/challenges/addChallenge'
+
 function App() {
   const [apiStatus, setApiStatus] = useState({ loading: true, data: null, error: null })
 
@@ -33,18 +36,13 @@ function App() {
           <Route path='/' element={<Navigate to='/index' replace />} />
           <Route path='/index' element={<Index />} />
           <Route path='/login' element={<Login />} />
-          <Route
-            path='/signup'
-            element={<SignUp/> }
-          >
-          </Route>
-          <Route path='/courses' element={<Courses/>}>
-            <Route path='/courses/create' element={<CreateCourse/>}/>
-          </Route>
-          <Route path='/challenges' element={<Challenges/>}>
-            <Route path='/challenges/create' element={<CreateChallenge/>}/>
-          </Route>
-
+          <Route path='/signup' element={<SignUp/> } />
+          <Route path='/courses' element={<Courses/>}/>
+          <Route path='/courses/:id' element={<CourseDetail/>}/>
+          <Route path='/courses/create' element={<CreateCourse/>}/>
+          <Route path='/challenges' element={<Challenges/>}/>
+          <Route path='/challenges/form' element={<ChallengeForm/>}/>
+          <Route path='/challenges/create' element={<CreateChallenge/>}/>
         </Routes>
       </BrowserRouter>
   )
