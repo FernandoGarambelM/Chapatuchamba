@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import { Link, useNavigate, useParams } from "react-router-dom";
-import logo from "../../assets/logo.png";
-=======
-import { Link } from "react-router-dom";
 import Header from "../../components/Header";
->>>>>>> 413563e42b02e8d6565f2c5640c798923e1bd871
 
 export default function ChallengeRegistration() {
   const navigate = useNavigate();
