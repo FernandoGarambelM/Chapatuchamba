@@ -50,7 +50,7 @@ export default function ChallengeForm() {
   };
 
   return (
-    <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-[#E5E5E5]">
+    <div style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#E5E5E5' }}>
       <header className="bg-[#0F2C4E] shadow-md">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
@@ -68,7 +68,7 @@ export default function ChallengeForm() {
           </div>
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/login" className="px-5 py-2 text-sm font-medium text-white border border-white rounded-lg hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300">Iniciar Sesión</Link>
-            <Link to="/signup" className="px-5 py-2 text-sm font-medium text-[#0F2C4E] bg-[#FFC72C] rounded-lg hover:opacity-90 transition-opacity duration-300">Registrarse</Link>
+            <Link to="/signup" className="px-5 py-2 text-sm font-medium text-gray-900 rounded-lg hover:opacity-90 transition-opacity duration-300">Registrarse</Link>
           </div>
         </nav>
       </header>
@@ -76,29 +76,29 @@ export default function ChallengeForm() {
       <main className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#0F2C4E] dark:text-white">
+            <h1 className="text-4xl md:text-5xl font-bold" style={{ color: '#0F2C4E' }}>
               Publica tu <span className="text-[#FFC72C]">reto</span>
             </h1>
           </div>
-          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12">
+          <div className="max-w-4xl mx-auto rounded-xl shadow-lg p-8 md:p-12" style={{ backgroundColor: '#FFFFFF' }}>
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-[#0F2C4E] dark:text-white">Publica Tu Reto</h2>
-              <p className="text-gray-500 dark:text-gray-400 mt-1">
+              <h2 className="text-2xl font-bold" style={{ color: '#0F2C4E' }}>Publica Tu Reto</h2>
+              <p className="mt-1" style={{ color: '#6B7280' }}>
                 Completa los siguientes campos para publicar tu reto en la plataforma.
               </p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-8">
-                <h3 className="text-lg font-semibold text-[#0F2C4E] dark:text-white mb-6">
+              <div className="border-b border-gray-200 pb-8">
+                <h3 className="text-lg font-semibold mb-6" style={{ color: '#0F2C4E' }}>
                   Información de la Empresa
                 </h3>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="companyName">
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="companyName">
                       Nombre de la Empresa
                     </label>
                     <input
-                      className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+                      className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-400"
                       id="companyName"
                       name="companyName"
                       placeholder="Introduce el nombre de tu empresa"
@@ -108,15 +108,15 @@ export default function ChallengeForm() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Logo de la Empresa
                     </label>
-                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg">
+                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
                       <div className="space-y-1 text-center">
-                        <span className="material-icons-outlined text-4xl text-gray-400 dark:text-gray-500">upload_file</span>
-                        <div className="flex text-sm text-gray-600 dark:text-gray-400">
+                        <span className="material-icons-outlined text-4xl text-gray-400">upload_file</span>
+                        <div className="flex text-sm text-gray-600">
                           <label
-                            className="relative cursor-pointer rounded-md font-medium text-[#0F2C4E] dark:text-[#FFC72C] hover:text-[#0F2C4E]/80 dark:hover:text-[#FFC72C]/80"
+                            className="relative cursor-pointer rounded-md font-medium text-[#0F2C4E] hover:text-[#0F2C4E]/80"
                             htmlFor="file-upload"
                           >
                             <span>Arrastra y suelta el archivo aquí para subirlo</span>
@@ -146,11 +146,11 @@ export default function ChallengeForm() {
                 <h3 className="text-lg font-semibold text-[#0F2C4E] dark:text-white mb-6">Detalles del Reto</h3>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="challengeTitle">
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="challengeTitle">
                       Título del Reto
                     </label>
                     <input
-                      className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+                      className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500   text-gray-900 placeholder-gray-400"
                       id="challengeTitle"
                       name="challengeTitle"
                       placeholder="El Diseño de una nueva app de movilidad"
@@ -160,11 +160,11 @@ export default function ChallengeForm() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="challengeDescription">
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="challengeDescription">
                       Descripción del Reto
                     </label>
                     <textarea
-                      className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+                      className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500   text-gray-900 placeholder-gray-400"
                       id="challengeDescription"
                       name="challengeDescription"
                       placeholder="Explica en detalle en qué consiste el reto..."
@@ -174,11 +174,11 @@ export default function ChallengeForm() {
                     ></textarea>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="challengeCategory">
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="challengeCategory">
                       Categoría del Reto
                     </label>
                     <select
-                      className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200"
+                      className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500   text-gray-900"
                       id="challengeCategory"
                       name="challengeCategory"
                       value={formData.challengeCategory}
@@ -197,10 +197,10 @@ export default function ChallengeForm() {
                 <h3 className="text-lg font-semibold text-[#0F2C4E] dark:text-white mb-6">Requisitos y Premios</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Habilidades Requeridas
                     </label>
-                    <div className="flex items-center flex-wrap gap-2 p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700">
+                    <div className="flex items-center flex-wrap gap-2 p-2 border border-gray-300 rounded-lg bg-gray-50">
                       {formData.requiredSkills.map((skill, index) => (
                         <span key={index} className="flex items-center bg-[#FFC72C] text-[#0F2C4E] text-sm font-medium px-2.5 py-1 rounded-full">
                           {skill}
@@ -214,7 +214,7 @@ export default function ChallengeForm() {
                         </span>
                       ))}
                       <input
-                        className="flex-grow bg-transparent border-none focus:ring-0 text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 min-w-[150px]"
+                        className="flex-grow bg-transparent border-none focus:ring-0 text-gray-900 placeholder-gray-400 min-w-[150px]"
                         placeholder="Añade una habilidad..."
                         type="text"
                         value={newSkill}
@@ -224,11 +224,11 @@ export default function ChallengeForm() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="deadline">
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="deadline">
                       Fecha Límite para Envío
                     </label>
                     <input
-                      className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200"
+                      className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500   text-gray-900"
                       id="deadline"
                       name="deadline"
                       type="date"
@@ -237,11 +237,11 @@ export default function ChallengeForm() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="prize">
+                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="prize">
                       Premio / Oportunidad
                     </label>
                     <input
-                      className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+                      className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500   text-gray-900 placeholder-gray-400"
                       id="prize"
                       name="prize"
                       placeholder="Ej: Pasantía, Dinero en efectivo"
@@ -256,11 +256,11 @@ export default function ChallengeForm() {
               <div>
                 <h3 className="text-lg font-semibold text-[#0F2C4E] dark:text-white mb-6">Información de Contacto</h3>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" htmlFor="contactEmail">
+                  <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="contactEmail">
                     Contacto de la Empresa
                   </label>
                   <input
-                    className="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-brand-navy focus:border-brand-navy dark:focus:ring-brand-yellow dark:focus:border-[#FFC72C] text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+                    className="w-full bg-gray-50 border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500   text-gray-900 placeholder-gray-400"
                     id="contactEmail"
                     name="contactEmail"
                     placeholder="Introduce un email de contacto"

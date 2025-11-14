@@ -34,7 +34,7 @@ export default function Challenges() {
   ];
 
   return (
-    <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-white text-[#0F2C4E]">
+    <div style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#FFFFFF' }} className="text-[#0F2C4E]">
       <header className="bg-[#0F2C4E] shadow-md">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-10">
@@ -65,43 +65,43 @@ export default function Challenges() {
       </header>
 
       <main>
-        <section className="bg-white dark:bg-[#111827] py-16 sm:py-24">
+        <section style={{ backgroundColor: '#FFFFFF' }} className="py-16 sm:py-24">
           <div className="container mx-auto px-6 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-              <span className="text-[#0F2C4E] dark:text-gray-100">Participa de los retos y aprende lo que el</span><br />
+              <span style={{ color: '#0F2C4E' }}>Participa de los retos y aprende lo que el</span><br />
               <span className="text-[#FFC72C] relative inline-block">
                 Mercado Tecnológico Necesita
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#FFC72C]/80"></span>
               </span>
             </h1>
-            <p className="mt-8 max-w-2xl mx-auto text-lg text-[#6B7280] dark:text-gray-400">
+            <p className="mt-8 max-w-2xl mx-auto text-lg" style={{ color: '#6B7280' }}>
               Muchas veces lo aprendido a clases ya no es suficiente, atrévete a aprender con proyectos reales de la industria.
             </p>
           </div>
         </section>
 
-        <section className="bg-white dark:bg-[#111827] pb-20 sm:pb-28">
+        <section style={{ backgroundColor: '#FFFFFF' }} className="pb-20 sm:pb-28">
           <div className="container mx-auto px-6">
             <div className="mb-12 max-w-2xl">
-              <h2 className="text-3xl font-bold text-[#0F2C4E] dark:text-gray-100">Retos Planteados</h2>
-              <p className="mt-4 text-[#6B7280] dark:text-gray-400">
+              <h2 className="text-3xl font-bold" style={{ color: '#0F2C4E' }}>Retos Planteados</h2>
+              <p className="mt-4" style={{ color: '#6B7280' }}>
                 Explora entre todos los retos que tenemos para ti, mientras aprendes de la industria tecnológica
               </p>
             </div>
             <div className="space-y-6">
               {challenges.map((challenge) => (
-                <div key={challenge.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                <div key={challenge.id} style={{ backgroundColor: '#FFFFFF' }} className="rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
                   <div className="flex-grow">
                     <div className="flex items-center space-x-4 mb-3">
                       <img alt={`${challenge.company} Logo`} className="h-10 w-10 object-contain" src={challenge.logo} />
-                      <span className="text-[#6B7280] dark:text-gray-400 font-medium">{challenge.company}</span>
+                      <span style={{ color: '#6B7280' }} className="font-medium">{challenge.company}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-[#0F2C4E] dark:text-gray-100 mb-2">{challenge.title}</h3>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: '#0F2C4E' }}>{challenge.title}</h3>
                     <div className="flex items-center space-x-2 mb-4">
                       <span className="text-xs font-semibold text-[#0F2C4E] bg-[#FFC72C] px-3 py-1 rounded-full">{challenge.prize}</span>
-                      <span className="text-xs font-semibold text-green-800 dark:text-green-300 bg-green-100 dark:bg-green-900 px-3 py-1 rounded-full">{challenge.category}</span>
+                      <span className="text-xs font-semibold text-green-800 bg-green-100 px-3 py-1 rounded-full">{challenge.category}</span>
                     </div>
-                    <p className="text-[#6B7280] dark:text-gray-400 text-sm leading-relaxed">
+                    <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
                       {challenge.description}
                     </p>
                   </div>
