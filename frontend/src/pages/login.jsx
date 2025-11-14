@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import llamaFeliz from '../assets/LLAMA FELIZ.png'
 
 export default function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    rememberMe: false
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Simular autenticación exitosa
+    const userData = {
+      name: formData.email.split('@')[0], // Usar parte del email como nombre
+      email: formData.email,
+      userType: 'Usuario',
+      loginTime: new Date().toISOString()
+    };
+
+    // Guardar en localStorage
+    localStorage.setItem('chapatuchamba_user', JSON.stringify(userData));
+    
+    // Redireccionar a index
+    window.location.href = '/';
+  };
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif' }} className="min-h-screen bg-white p-6 flex items-center justify-center relative">
       {/* Flecha de regreso */}
@@ -28,7 +59,7 @@ export default function Login() {
         </div>
 
         {/* Formulario */}
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-[#0F2C4E] mb-2">
               Correo electrónico
@@ -38,6 +69,8 @@ export default function Login() {
               id="email"
               name="email"
               required
+              value={formData.email}
+              onChange={handleInputChange}
               className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
               placeholder="tu@ejemplo.com"
             />
@@ -52,6 +85,8 @@ export default function Login() {
               id="password"
               name="password"
               required
+              value={formData.password}
+              onChange={handleInputChange}
               className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
               placeholder="••••••••"
             />
@@ -61,8 +96,10 @@ export default function Login() {
             <div className="flex items-center">
               <input
                 id="remember-me"
-                name="remember-me"
+                name="rememberMe"
                 type="checkbox"
+                checked={formData.rememberMe}
+                onChange={handleInputChange}
                 className="h-4 w-4 text-[#FFC72C] focus:ring-[#FFC72C] border-[#0F2C4E] rounded"
               />
               <label htmlFor="remember-me" className="ml-2 block text-sm text-[#0F2C4E]">

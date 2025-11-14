@@ -1,7 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import llamaFeliz from '../assets/LLAMA FELIZ.png'
 
 export default function Signup() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    userType: '',
+    terms: false
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validar que las contraseñas coincidan
+    if (formData.password !== formData.confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
+    // Validar que se hayan aceptado los términos
+    if (!formData.terms) {
+      alert('Debes aceptar los términos y condiciones');
+      return;
+    }
+
+    // Simular registro exitoso
+    const userData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      userType: formData.userType,
+      registrationTime: new Date().toISOString()
+    };
+
+    // Guardar en localStorage
+    localStorage.setItem('chapatuchamba_user', JSON.stringify(userData));
+    
+    // Redireccionar a index
+    window.location.href = '/';
+  };
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif' }} className="min-h-screen bg-white p-6 flex items-center justify-center relative">
       {/* Flecha de regreso */}
@@ -28,7 +76,7 @@ export default function Signup() {
         </div>
 
         {/* Formulario */}
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-[#0F2C4E] mb-2">
@@ -39,6 +87,8 @@ export default function Signup() {
                 id="firstName"
                 name="firstName"
                 required
+                value={formData.firstName}
+                onChange={handleInputChange}
                 className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
                 placeholder="Juan"
               />
@@ -53,6 +103,8 @@ export default function Signup() {
                 id="lastName"
                 name="lastName"
                 required
+                value={formData.lastName}
+                onChange={handleInputChange}
                 className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
                 placeholder="Pérez"
               />
@@ -68,6 +120,8 @@ export default function Signup() {
               id="email"
               name="email"
               required
+              value={formData.email}
+              onChange={handleInputChange}
               className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
               placeholder="tu@ejemplo.com"
             />
@@ -82,6 +136,8 @@ export default function Signup() {
               id="password"
               name="password"
               required
+              value={formData.password}
+              onChange={handleInputChange}
               className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
               placeholder="••••••••"
             />
@@ -96,6 +152,8 @@ export default function Signup() {
               id="confirmPassword"
               name="confirmPassword"
               required
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
               className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E]"
               placeholder="••••••••"
             />
@@ -109,12 +167,14 @@ export default function Signup() {
               id="userType"
               name="userType"
               required
+              value={formData.userType}
+              onChange={handleInputChange}
               className="w-full px-4 py-3 border-2 border-[#0F2C4E] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC72C] focus:border-[#FFC72C] text-[#0F2C4E] bg-white"
             >
               <option value="">Selecciona una opción</option>
-              <option value="student">Estudiante</option>
-              <option value="company">Empresa</option>
-              <option value="professional">Profesional</option>
+              <option value="Estudiante">Estudiante</option>
+              <option value="Empresa">Empresa</option>
+              <option value="Profesional">Profesional</option>
             </select>
           </div>
 
@@ -125,6 +185,8 @@ export default function Signup() {
                 name="terms"
                 type="checkbox"
                 required
+                checked={formData.terms}
+                onChange={handleInputChange}
                 className="h-4 w-4 text-[#FFC72C] focus:ring-[#FFC72C] border-[#0F2C4E] rounded"
               />
             </div>
