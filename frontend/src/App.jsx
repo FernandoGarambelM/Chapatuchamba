@@ -11,6 +11,8 @@ import Courses from './pages/courses'
 import CourseDetail from './pages/courses/CourseDetail'
 import CreateCourse from './pages/courses/addCourse'
 import Challenges from './pages/challenges'
+import ChallengeDetail from './pages/challenges/ChallengeDetail'
+import ChallengeRegistration from './pages/challenges/ChallengeRegistration'
 import ChallengeForm from './pages/challenges/ChallengeForm'
 import CreateChallenge from './pages/challenges/addChallenge'
 
@@ -41,6 +43,8 @@ function App() {
           <Route path='/courses/:id' element={<CourseDetail/>}/>
           <Route path='/courses/create' element={<CreateCourse/>}/>
           <Route path='/challenges' element={<Challenges/>}/>
+          <Route path='/challenges/:id' element={<ChallengeDetail/>}/>
+          <Route path='/challenges/:id/register' element={<ChallengeRegistration/>}/>
           <Route path='/challenges/form' element={<ChallengeForm/>}/>
           <Route path='/challenges/create' element={<CreateChallenge/>}/>
         </Routes>
