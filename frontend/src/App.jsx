@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import api from './services/api'
-import './App.css'
 import logo from './assets/logo.png'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
