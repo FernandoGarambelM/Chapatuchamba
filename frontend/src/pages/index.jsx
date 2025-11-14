@@ -102,11 +102,12 @@ export default function Index() {
         <section className="bg-[#0F2C4E] py-20">
           <div className="container mx-auto px-6 text-center">
             <div className="flex justify-center items-end gap-4 mb-4">
+                <img alt="Llama pequeña con un signo de interrogación" className="h-24 mb-2 hidden sm:block" src={llamaPensativa} />
               <div>
                 <h3 className="text-white text-2xl font-semibold">¿Cómo funciona?</h3>
                 <h2 className="text-[#FFC72C] text-4xl md:text-5xl font-extrabold">Este es el proceso</h2>
               </div>
-              <img alt="Llama pequeña con un signo de interrogación" className="h-16 mb-2 hidden sm:block" src={llamaPensativa} />
+              <img alt="Llama pequeña con un signo de interrogación" className="h-24 mb-2 hidden sm:block" src={llamaPensativa} />
             </div>
             <div className="mt-16 grid lg:grid-cols-2 gap-16">
               <div>
