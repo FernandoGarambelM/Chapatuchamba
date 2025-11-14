@@ -106,9 +106,12 @@ export default function Challenges() {
                     </p>
                   </div>
                   <div className="flex-shrink-0">
-                    <button className="w-full md:w-auto bg-[#FFC72C] text-[#0F2C4E] rounded-md px-8 py-3 font-semibold hover:opacity-90 transition-opacity">
+                    <Link 
+                      to={`/challenges/${challenge.id}`}
+                      className="block w-full md:w-auto bg-[#FFC72C] text-[#0F2C4E] rounded-md px-8 py-3 font-semibold hover:opacity-90 transition-opacity text-center"
+                    >
                       Ver Reto
-                    </button>
+                    </Link>
                   </div>
                 </div>
               ))}
