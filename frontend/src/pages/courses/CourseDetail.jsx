@@ -15,7 +15,7 @@ export default function CourseDetail() {
   };
 
   return (
-    <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-white text-[#0F2C4E] transition-colors duration-300">
+    <div style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#FFFFFF' }}>
       <header className="bg-[#0F2C4E] shadow-lg sticky top-0 z-50">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
@@ -41,8 +41,8 @@ export default function CourseDetail() {
       <main className="container mx-auto px-6 py-12 md:py-16">
         <section className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div>
-            <p className="text-[#0F2C4E] dark:text-gray-400 text-xl font-medium mb-1">Estudia</p>
-            <h1 className="text-4xl md:text-6xl font-bold text-[#0F2C4E] dark:text-white">
+            <p className="text-xl font-medium mb-1" style={{ color: '#0F2C4E' }}>Estudia</p>
+            <h1 className="text-4xl md:text-6xl font-bold" style={{ color: '#0F2C4E' }}>
               Ciencia de Datos <br />con Python
             </h1>
           </div>
