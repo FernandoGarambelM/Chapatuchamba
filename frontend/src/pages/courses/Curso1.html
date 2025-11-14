@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ciencia de Datos con Python - Chapa Tu Chamba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FFC72C",
+              "background-light": "#FFFFFF",
+              "background-dark": "#111827",
+              "brand-navy": "#0F2C4E",
+              "brand-gray": "#E5E5E5",
+              "text-light": "#0F2C4E",
+              "text-dark": "#F3F4F6"
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300">
+<header class="bg-brand-navy shadow-lg">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center space-x-10">
+<a class="flex items-center space-x-2" href="#">
+<div class="bg-brand-navy rounded-full p-1 border-2 border-white">
+<img alt="Llama with hard hat logo" class="h-10 w-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzgqErnMTFcriHljIw_E1hym8flsSy1ozfcp7U3w9qcko5z_x0W5z7v-WufmEl7RwRMiEy03GtX-VGbLTYOsJHv_CK8Kos41JRaRrL_l3Mf86v8HA9GAi92FJthTZL-XYe1dpWaVedkWaz_bu0XEzwsIpdMQKKW0nHtbgpD6kVfc-NItGM8ut3xNsfGyBRP7ivicVai2sakPHJ67ZRM2irjLnhuREZ_89BGEM2Ob4rDTX1_EiZqJoAff0u-R0Flrj0LUN3kiDyItO_"/>
+</div>
+<span class="text-white text-lg font-bold tracking-wider">CHAPA TU CHAMBA</span>
+</a>
+<ul class="hidden md:flex items-center space-x-8 text-white">
+<li><a class="pb-1 border-b-2 border-primary text-primary font-semibold" href="#">Cursos</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Retos</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Publica un Reto</a></li>
+</ul>
+</div>
+<div class="flex items-center space-x-4">
+<a class="hidden sm:inline-block text-white border border-white rounded-md px-4 py-2 text-sm font-semibold hover:bg-white hover:text-brand-navy transition-colors" href="#">Iniciar Sesión</a>
+<a class="bg-primary text-brand-navy rounded-md px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity" href="#">Registrarse</a>
+</div>
+</nav>
+</header>
+<main class="container mx-auto px-6 py-12 md:py-16">
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+<div>
+<p class="text-brand-navy dark:text-gray-400 text-xl font-medium mb-1">Estudia</p>
+<h1 class="text-4xl md:text-6xl font-bold text-brand-navy dark:text-white">Ciencia de Datos <br/>con Python</h1>
+</div>
+<div class="mt-8 md:mt-0">
+<img alt="Python language logo" class="h-24 w-24 md:h-32 md:w-32" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbhNcIJG_p03BO3zw9x5ci4QehJQjUcH9Dwa_k3rAFKZf3ELW6OSpIXW1bzrRTHhV1DlZu2lRlMuP45ViEFMeU3a1g9XdmbFmlmjjasqzMQ2z2fVZ49Olrk_FQGX94VjvioXX1lYAQdfKYsV9o7Nqt_wjp0R9btlHZrSLqh_S1QAN6yu8VORiAlHolS9tEE-O5EJPlUt-Fxr42MN9NtWesKOOK41eOkPV8OOpzLlBwENC3jd7jG5LsnJL_MaMc_NUZM9ovqtcEhHOr"/>
+</div>
+</section>
+<div class="space-y-1" x-data="{ openAccordion: 1 }">
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openAccordion = openAccordion === 1 ? null : 1" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Fundamentos de Programación con Python</span>
+</div>
+<span :class="{ 'rotate-180': openAccordion === 1 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openAccordion === 1">
+<div class="pb-6 pl-16">
+<div class="bg-gray-800 rounded-lg overflow-hidden relative aspect-video max-w-2xl mb-6">
+<img alt="Video player showing Python code" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOhQ_NRyDU2vuUhqq7rrSz3VJ65eScR0st9McusRheS42xhvunaaSXeDuGUbf2Z-1-IDXASF8HqOVJ2fUR_I8j9moxUet8iihOUef3FhVOnpye6ZAdBfkDCc0lzFX-Iz-jNex2Og__7NhwhwHNEKhRjYvrVjSvF7eX_XCXBMg-4VDZwVi-DKP0kkQJq-eyPtnea-Ur0zTTojWksJ_8PwEzveGBS7VZsAgajwza-_mJ4DzfgmvsXSssUe-fz8zcypdYOuWP644M8Afp"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<button class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+<span class="material-icons text-white text-5xl ml-1">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="mb-6 flex items-center space-x-3">
+<div class="bg-red-500 w-8 h-8 rounded-md flex items-center justify-center">
+<span class="material-icons text-white text-xl">picture_as_pdf</span>
+</div>
+<span class="text-gray-600 dark:text-gray-300">Descarga Material/PDF</span>
+</div>
+<div class="text-gray-500 dark:text-gray-400 space-y-2 prose dark:prose-invert prose-sm">
+<p>Variables y Tipos de Datos: Python es un lenguaje dinámico lo que significa que no es necesario declarar el tipo de una variable. Se pueden utilizar variables de diferentes tipos:</p>
+<ul>
+<li>Enteros(int): x = 5</li>
+<li>Datos Reales (float): pi = 3.14</li>
+<li>Cadenas de texto (str): nombre = "Charly"</li>
+<li>Booleanos (bool): es_valido = True</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openAccordion = openAccordion === 2 ? null : 2" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Instalación y uso Básico de Python</span>
+</div>
+<span :class="{ 'rotate-180': openAccordion === 2 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openAccordion === 2"><div class="p-6">Content for this section goes here.</div></div>
+</div>
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openAccordion = openAccordion === 3 ? null : 3" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Semántica y Sintaxis de Programación</span>
+</div>
+<span :class="{ 'rotate-180': openAccordion === 3 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openAccordion === 3"><div class="p-6">Content for this section goes here.</div></div>
+</div>
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openAccordion = openAccordion === 4 ? null : 4" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Operadores Básicos y Manejo de Cadena</span>
+</div>
+<span :class="{ 'rotate-180': openAccordion === 4 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openAccordion === 4"><div class="p-6">Content for this section goes here.</div></div>
+</div>
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openAccordion = openAccordion === 5 ? null : 5" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Uso de Selectivas</span>
+</div>
+<span :class="{ 'rotate-180': openAccordion === 5 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openAccordion === 5"><div class="p-6">Content for this section goes here.</div></div>
+</div>
+</div>
+<div class="text-center mt-8">
+<button class="bg-primary text-brand-navy font-semibold px-6 py-2 rounded-md hover:opacity-90 transition-opacity">Ver más</button>
+</div>
+<section class="mt-16">
+<h2 class="text-3xl font-bold text-brand-navy dark:text-white mb-6">Ponte a Prueba</h2>
+<div class="space-y-1" x-data="{ openPractice: null }">
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openPractice = openPractice === 1 ? null : 1" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Practica: Operadores y Tipos de Datos</span>
+</div>
+<span :class="{ 'rotate-180': openPractice === 1 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openPractice === 1"><div class="p-6">Practice content for this section goes here.</div></div>
+</div>
+<div class="border-b border-brand-gray dark:border-gray-700">
+<button @click="openPractice = openPractice === 2 ? null : 2" class="w-full flex justify-between items-center py-6 text-left">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/80 rounded-full flex-shrink-0"></div>
+<span class="font-semibold text-lg text-brand-navy dark:text-white">Practica: Selectivas</span>
+</div>
+<span :class="{ 'rotate-180': openPractice === 2 }" class="material-icons text-brand-navy dark:text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div x-collapse="" x-show="openPractice === 2"><div class="p-6">Practice content for this section goes here.</div></div>
+</div>
+</div>
+<div class="text-center mt-8">
+<button class="bg-primary text-brand-navy font-semibold px-6 py-2 rounded-md hover:opacity-90 transition-opacity">Ver más</button>
+</div>
+</section>
+</main>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</body></html>

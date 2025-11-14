@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Publica tu Reto - Chapa Tu Chamba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0F2C4E",
+              "background-light": "#E5E5E5",
+              "background-dark": "#121212",
+              'brand-yellow': '#FFC72C',
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        .material-icons-outlined {
+            font-size: inherit;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div id="root">
+<header class="bg-primary shadow-md">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center space-x-8">
+<a class="flex items-center space-x-3" href="#">
+<div class="bg-primary p-1 rounded-full">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center relative">
+<svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 13.33V6.67C16 4.08 13.92 2 11.33 2H10C7.33 2 5.33 4.08 5.33 6.67V13.33C5.33 15.92 3.25 18 0.67 18H0V19.33H5.33V22H6.67V19.33H16V22H17.33V19.33H22.67V18H20C17.42 18 16 15.92 16 13.33ZM14.67 13.33V6.67C14.67 4.83 13.17 3.33 11.33 3.33H10C8.17 3.33 6.67 4.83 6.67 6.67V13.33H14.67Z"></path></svg>
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-brand-yellow w-5 h-4 rounded-t-full border-2 border-primary flex justify-center items-start">
+<div class="w-2.5 h-1 bg-primary/20 rounded-b-sm"></div>
+</div>
+</div>
+</div>
+<span class="text-white text-xl font-bold tracking-wider">CHAPA TU CHAMBA</span>
+</a>
+<div class="hidden md:flex items-center space-x-6">
+<a class="text-gray-300 hover:text-white transition-colors duration-200" href="#">Cursos</a>
+<a class="text-gray-300 hover:text-white transition-colors duration-200" href="#">Retos</a>
+<a class="text-white font-semibold border-b-2 border-brand-yellow pb-1" href="#">Publica un Reto</a>
+</div>
+</div>
+<div class="hidden md:flex items-center space-x-4">
+<button class="px-5 py-2 text-sm font-medium text-white border border-white rounded-lg hover:bg-white hover:text-primary transition-colors duration-300">Iniciar Sesión</button>
+<button class="px-5 py-2 text-sm font-medium text-primary bg-brand-yellow rounded-lg hover:opacity-90 transition-opacity duration-300">Registrarse</button>
+</div>
+</nav>
+</header>
+<main class="py-12 md:py-16">
+<div class="container mx-auto px-4">
+<div class="text-center mb-10">
+<h1 class="text-4xl md:text-5xl font-bold text-primary dark:text-white">
+                        Publica tu <span class="text-brand-yellow">reto</span>
+</h1>
+</div>
+<div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12">
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-primary dark:text-white">Publica Tu Reto</h2>
+<p class="text-gray-500 dark:text-gray-400 mt-1">Completa los siguientes campos para publicar tu reto en la plataforma.</p>
+</div>
+<form action="#" class="space-y-8" method="POST">
+<div class="border-b border-gray-200 dark:border-gray-700 pb-8">
+<h3 class="text-lg font-semibold text-primary dark:text-white mb-6">Información de la Empresa</h3>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="company-name">Nombre de la Empresa</label>
+<input class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500" id="company-name" placeholder="Introduce el nombre de tu empresa" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Logo de la Empresa</label>
+<div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg">
+<div class="space-y-1 text-center">
+<span class="material-icons-outlined text-4xl text-gray-400 dark:text-gray-500">upload_file</span>
+<div class="flex text-sm text-gray-600 dark:text-gray-400">
+<label class="relative cursor-pointer rounded-md font-medium text-primary dark:text-brand-yellow hover:text-primary/80 dark:hover:text-brand-yellow/80" for="file-upload">
+<span>Arrastra y suelta el archivo aquí para subirlo</span>
+<input class="sr-only" id="file-upload" name="file-upload" type="file"/>
+</label>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-500">PNG, JPG, GIF hasta 10MB</p>
+<button class="mt-4 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90" type="button">Subir Logo</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-200 dark:border-gray-700 pb-8">
+<h3 class="text-lg font-semibold text-primary dark:text-white mb-6">Detalles del Reto</h3>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="challenge-title">Título del Reto</label>
+<input class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500" id="challenge-title" placeholder="El Diseño de una nueva app de movilidad" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="challenge-description">Descripción del Reto</label>
+<textarea class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500" id="challenge-description" placeholder="Explica en detalle en qué consiste el reto..." rows="4"></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="challenge-category">Categoría del Reto</label>
+<select class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200" id="challenge-category">
+<option>Tecnología</option>
+<option>Diseño</option>
+<option>Marketing</option>
+<option>Negocios</option>
+</select>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-200 dark:border-gray-700 pb-8">
+<h3 class="text-lg font-semibold text-primary dark:text-white mb-6">Requisitos y Premios</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="required-skills">Habilidades Requeridas</label>
+<div class="flex items-center flex-wrap gap-2 p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700">
+<span class="flex items-center bg-brand-yellow text-primary text-sm font-medium px-2.5 py-1 rounded-full">Python <button class="ml-1.5 text-primary/70 hover:text-primary">×</button></span>
+<span class="flex items-center bg-brand-yellow text-primary text-sm font-medium px-2.5 py-1 rounded-full">UI/UX <button class="ml-1.5 text-primary/70 hover:text-primary">×</button></span>
+<input class="flex-grow bg-transparent border-none focus:ring-0 text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 min-w-[150px]" id="required-skills" placeholder="Añade una habilidad..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="deadline">Fecha Límite para Envío</label>
+<input class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200" id="deadline" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="prize">Premio / Oportunidad</label>
+<input class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500" id="prize" placeholder="Ej: Pasantía, Dinero en efectivo" type="text"/>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary dark:text-white mb-6">Información de Contacto</h3>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="contact-email">Contacto de la Empresa</label>
+<input class="w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:focus:ring-brand-yellow dark:focus:border-brand-yellow text-gray-900 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500" id="contact-email" placeholder="Introduce un email de contacto" type="email"/>
+</div>
+</div>
+<div class="pt-6">
+<button class="w-full bg-brand-yellow text-primary font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity duration-300 text-lg" type="submit">
+                                Enviar Reto
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

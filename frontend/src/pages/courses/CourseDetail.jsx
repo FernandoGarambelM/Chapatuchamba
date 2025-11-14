@@ -1,0 +1,174 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
+
+export default function CourseDetail() {
+  const [openAccordion, setOpenAccordion] = useState(1);
+  const [openPractice, setOpenPractice] = useState(null);
+
+  const toggleAccordion = (id) => {
+    setOpenAccordion(openAccordion === id ? null : id);
+  };
+
+  const togglePractice = (id) => {
+    setOpenPractice(openPractice === id ? null : id);
+  };
+
+  return (
+    <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-white text-[#0F2C4E] transition-colors duration-300">
+      <header className="bg-[#0F2C4E] shadow-lg sticky top-0 z-50">
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-8">
+            <Link to="/index" className="flex items-center space-x-2">
+              <div className="bg-[#0F2C4E] rounded-full p-1 border-2 border-white">
+                <img alt="Llama con casco amarillo" className="h-10 w-10" src={logo} />
+              </div>
+              <span className="text-white text-lg font-bold tracking-wide">CHAPA TU CHAMBA</span>
+            </Link>
+            <div className="hidden md:flex items-center space-x-6">
+              <Link to="/courses" className="text-white hover:text-[#FFC72C] transition-colors duration-300">Cursos</Link>
+              <Link to="/challenges" className="text-white hover:text-[#FFC72C] transition-colors duration-300">Retos</Link>
+              <Link to="/challenges/form" className="text-white hover:text-[#FFC72C] transition-colors duration-300">Publica un Reto</Link>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center space-x-4">
+            <Link to="/login" className="bg-[#0F2C4E] text-white px-4 py-2 rounded-lg border border-white hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300">Iniciar Sesión</Link>
+            <Link to="/signup" className="bg-[#FFC72C] text-[#0F2C4E] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300">Registrarse</Link>
+          </div>
+        </nav>
+      </header>
+
+      <main className="container mx-auto px-6 py-12 md:py-16">
+        <section className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+          <div>
+            <p className="text-[#0F2C4E] dark:text-gray-400 text-xl font-medium mb-1">Estudia</p>
+            <h1 className="text-4xl md:text-6xl font-bold text-[#0F2C4E] dark:text-white">
+              Ciencia de Datos <br />con Python
+            </h1>
+          </div>
+          <div className="mt-8 md:mt-0">
+            <img 
+              alt="Python language logo" 
+              className="h-24 w-24 md:h-32 md:w-32" 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbhNcIJG_p03BO3zw9x5ci4QehJQjUcH9Dwa_k3rAFKZf3ELW6OSpIXW1bzrRTHhV1DlZu2lRlMuP45ViEFMeU3a1g9XdmbFmlmjjasqzMQ2z2fVZ49Olrk_FQGX94VjvioXX1lYAQdfKYsV9o7Nqt_wjp0R9btlHZrSLqh_S1QAN6yu8VORiAlHolS9tEE-O5EJPlUt-Fxr42MN9NtWesKOOK41eOkPV8OOpzLlBwENC3jd7jG5LsnJL_MaMc_NUZM9ovqtcEhHOr"
+            />
+          </div>
+        </section>
+
+        <div className="space-y-1">
+          <div className="border-b border-[#E5E5E5] dark:border-gray-700">
+            <button 
+              onClick={() => toggleAccordion(1)} 
+              className="w-full flex justify-between items-center py-6 text-left"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-[#FFC72C]/80 rounded-full flex-shrink-0"></div>
+                <span className="font-semibold text-lg text-[#0F2C4E] dark:text-white">
+                  Fundamentos de Programación con Python
+                </span>
+              </div>
+              <span className={`material-icons text-[#0F2C4E] dark:text-gray-400 transition-transform duration-300 ${openAccordion === 1 ? 'rotate-180' : ''}`}>
+                expand_more
+              </span>
+            </button>
+            {openAccordion === 1 && (
+              <div className="pb-6 pl-16">
+                <div className="bg-gray-800 rounded-lg overflow-hidden relative aspect-video max-w-2xl mb-6">
+                  <img 
+                    alt="Video player showing Python code" 
+                    className="w-full h-full object-cover" 
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOhQ_NRyDU2vuUhqq7rrSz3VJ65eScR0st9McusRheS42xhvunaaSXeDuGUbf2Z-1-IDXASF8HqOVJ2fUR_I8j9moxUet8iihOUef3FhVOnpye6ZAdBfkDCc0lzFX-Iz-jNex2Og__7NhwhwHNEKhRjYvrVjSvF7eX_XCXBMg-4VDZwVi-DKP0kkQJq-eyPtnea-Ur0zTTojWksJ_8PwEzveGBS7VZsAgajwza-_mJ4DzfgmvsXSssUe-fz8zcypdYOuWP644M8Afp"
+                  />
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                    <button className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/30 transition-colors">
+                      <span className="material-icons text-white text-5xl ml-1">play_arrow</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="mb-6 flex items-center space-x-3">
+                  <div className="bg-red-500 w-8 h-8 rounded-md flex items-center justify-center">
+                    <span className="material-icons text-white text-xl">picture_as_pdf</span>
+                  </div>
+                  <span className="text-gray-600 dark:text-gray-300">Descarga Material/PDF</span>
+                </div>
+                <div className="text-gray-500 dark:text-gray-400 space-y-2">
+                  <p>Variables y Tipos de Datos: Python es un lenguaje dinámico lo que significa que no es necesario declarar el tipo de una variable. Se pueden utilizar variables de diferentes tipos:</p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Enteros(int): x = 5</li>
+                    <li>Datos Reales (float): pi = 3.14</li>
+                    <li>Cadenas de texto (str): nombre = "Charly"</li>
+                    <li>Booleanos (bool): es_valido = True</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {[
+            { id: 2, title: "Instalación y uso Básico de Python" },
+            { id: 3, title: "Semántica y Sintaxis de Programación" },
+            { id: 4, title: "Operadores Básicos y Manejo de Cadena" },
+            { id: 5, title: "Uso de Selectivas" }
+          ].map(section => (
+            <div key={section.id} className="border-b border-[#E5E5E5] dark:border-gray-700">
+              <button 
+                onClick={() => toggleAccordion(section.id)} 
+                className="w-full flex justify-between items-center py-6 text-left"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-[#FFC72C]/80 rounded-full flex-shrink-0"></div>
+                  <span className="font-semibold text-lg text-[#0F2C4E] dark:text-white">{section.title}</span>
+                </div>
+                <span className={`material-icons text-[#0F2C4E] dark:text-gray-400 transition-transform duration-300 ${openAccordion === section.id ? 'rotate-180' : ''}`}>
+                  expand_more
+                </span>
+              </button>
+              {openAccordion === section.id && (
+                <div className="p-6 text-gray-600 dark:text-gray-400">Contenido para esta sección.</div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <button className="bg-[#FFC72C] text-[#0F2C4E] font-semibold px-6 py-2 rounded-md hover:opacity-90 transition-opacity">
+            Ver más
+          </button>
+        </div>
+
+        <section className="mt-16">
+          <h2 className="text-3xl font-bold text-[#0F2C4E] dark:text-white mb-6">Ponte a Prueba</h2>
+          <div className="space-y-1">
+            {[
+              { id: 1, title: "Practica: Operadores y Tipos de Datos" },
+              { id: 2, title: "Practica: Selectivas" }
+            ].map(practice => (
+              <div key={practice.id} className="border-b border-[#E5E5E5] dark:border-gray-700">
+                <button 
+                  onClick={() => togglePractice(practice.id)} 
+                  className="w-full flex justify-between items-center py-6 text-left"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#FFC72C]/80 rounded-full flex-shrink-0"></div>
+                    <span className="font-semibold text-lg text-[#0F2C4E] dark:text-white">{practice.title}</span>
+                  </div>
+                  <span className={`material-icons text-[#0F2C4E] dark:text-gray-400 transition-transform duration-300 ${openPractice === practice.id ? 'rotate-180' : ''}`}>
+                    expand_more
+                  </span>
+                </button>
+                {openPractice === practice.id && (
+                  <div className="p-6 text-gray-600 dark:text-gray-400">Contenido de práctica para esta sección.</div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <button className="bg-[#FFC72C] text-[#0F2C4E] font-semibold px-6 py-2 rounded-md hover:opacity-90 transition-opacity">
+              Ver más
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}

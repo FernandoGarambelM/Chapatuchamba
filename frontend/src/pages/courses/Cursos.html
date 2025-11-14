@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cursos - Chapa Tu Chamba</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              'brand-navy': '#0F2C4E',
+              'brand-yellow': '#FFC72C',
+              'brand-gray': '#E5E5E5',
+              'brand-gray-text': '#6B7280', // A slightly darker gray for better text contrast
+              "background-light": "#FFFFFF",
+              "background-dark": "#111827",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem", // 8px
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-brand-navy dark:text-gray-200">
+<header class="bg-brand-navy text-white">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center space-x-10">
+<a class="flex items-center space-x-3" href="#">
+<div class="bg-brand-navy p-1 rounded-full flex items-center justify-center">
+<img alt="Chapa Tu Chamba logo of a llama with a hard hat" class="h-10 w-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1F3SldBY3ey81CUMCexB3-N8l2_98-FxWwFwIDfPXrR9Ohnh_b_atBNWMpP3UpBZFzEP7kit0nLdnCe8PH7h4DXMZEb2ESIphyps_3v97_ldlYR3wFFinkBIb7xb9UV0vsZG4ZvuHFRG8LZNoI3QKR2xK0384KndZgdXHTIYkTTPrPHojN78Jpy2B5byHOP_v79vCb81duW0RNWaFEFx1uKRuLY9RRTGB1dCXPLjm6rj4HeOv-mx3u69z5uKrEXVSwP2D96ZK6lez"/>
+</div>
+<span class="font-bold text-lg hidden sm:block">CHAPA TU CHAMBA</span>
+</a>
+<ul class="hidden md:flex items-center space-x-8">
+<li><a class="text-brand-yellow font-semibold border-b-2 border-brand-yellow pb-1" href="#">Cursos</a></li>
+<li><a class="hover:text-brand-yellow transition-colors" href="#">Retos</a></li>
+<li><a class="hover:text-brand-yellow transition-colors" href="#">Publica un Reto</a></li>
+</ul>
+</div>
+<div class="flex items-center space-x-4">
+<a class="text-white border border-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-white hover:text-brand-navy transition-colors" href="#">Iniciar Sesión</a>
+<a class="bg-brand-yellow text-brand-navy rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity" href="#">Registrarse</a>
+</div>
+</nav>
+</header>
+<main class="container mx-auto px-6 py-16 sm:py-24">
+<section class="relative mb-20 md:mb-32">
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-6xl font-bold leading-tight text-brand-navy dark:text-white">
+                    Cursos que te preparan para la <span class="text-brand-yellow">tecnología actual y futura</span>
+</h1>
+<p class="mt-6 text-lg text-brand-gray-text dark:text-gray-400">
+                    Porque todo lo que necesitas para brillar, es una oportunidad para aprender.
+                </p>
+</div>
+<div class="absolute top-0 right-0 -translate-y-1/4 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-brand-yellow rounded-full -z-10"></div>
+</section>
+<section class="mb-20 md:mb-32">
+<h2 class="text-3xl md:text-4xl font-bold text-brand-navy dark:text-white mb-4">Cursos Disponibles</h2>
+<p class="text-brand-gray-text dark:text-gray-400 max-w-3xl mb-12">
+                Estos cursos de alta tecnología son proporcionados gracias a nuestros aliados, empresas, universidades e instituciones.
+            </p>
+<div class="space-y-8">
+<div class="flex items-start space-x-6 py-6 border-b border-brand-gray dark:border-gray-700">
+<div class="flex-shrink-0 w-12 h-12 bg-brand-yellow rounded-full"></div>
+<div>
+<h3 class="text-xl font-bold text-brand-navy dark:text-white">Ciencia de Datos con Python</h3>
+<p class="mt-1 text-brand-gray-text dark:text-gray-400">La ciencia de datos es una disciplina clave que utiliza métodos, analíticas y herramientas computacionales para obtener conocimiento valioso a partir de datos.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6 py-6 border-b border-brand-gray dark:border-gray-700">
+<div class="flex-shrink-0 w-12 h-12 bg-brand-yellow rounded-full"></div>
+<div>
+<h3 class="text-xl font-bold text-brand-navy dark:text-white">Ciberseguridad y Redes</h3>
+<p class="mt-1 text-brand-gray-text dark:text-gray-400">La ciberseguridad y el conocimiento de redes contribuyen habilidades de networking, computer programming, database management y software engineering.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6 py-6 border-b border-brand-gray dark:border-gray-700">
+<div class="flex-shrink-0 w-12 h-12 bg-brand-yellow rounded-full"></div>
+<div>
+<h3 class="text-xl font-bold text-brand-navy dark:text-white">Desarrollo Web</h3>
+<p class="mt-1 text-brand-gray-text dark:text-gray-400">Actualmente todo está contenido en la web, conocer como funcionan y que medios usa su creación es importante para el manejo de datos.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6 py-6 border-b border-brand-gray dark:border-gray-700">
+<div class="flex-shrink-0 w-12 h-12 bg-brand-yellow rounded-full"></div>
+<div>
+<h3 class="text-xl font-bold text-brand-navy dark:text-white">Tecnologías emergentes</h3>
+<p class="mt-1 text-brand-gray-text dark:text-gray-400">Inteligencia Artificial y robots autónomos son ejemplos de como la tecnología transforma distintos campos y estás preparado a introducir estos temas en ámbito de profesionalismo.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6 py-6 border-b border-brand-gray dark:border-gray-700">
+<div class="flex-shrink-0 w-12 h-12 bg-brand-yellow rounded-full"></div>
+<div>
+<h3 class="text-xl font-bold text-brand-navy dark:text-white">Fundamentos de TI</h3>
+<p class="mt-1 text-brand-gray-text dark:text-gray-400">Es fundamental adquirir una base técnica sólida, tales como: soporte técnico, seguridad de la red, administración de servidores y hardware, sistemas operativos, etc.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6 py-6">
+<div class="flex-shrink-0 w-12 h-12 bg-brand-yellow rounded-full"></div>
+<div>
+<h3 class="text-xl font-bold text-brand-navy dark:text-white">Desarrollo Móvil</h3>
+<p class="mt-1 text-brand-gray-text dark:text-gray-400">El conocimiento de desarrollo y programación de Apps supone un importante factor que complementa y afianza muchos proyectos.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="text-center py-16">
+<p class="text-xl text-brand-gray-text dark:text-gray-400 max-w-2xl mx-auto mb-8">
+                Si ya tienes lo necesario, atrévete a participar de los retos que tenemos para ti.
+            </p>
+<a class="inline-block bg-brand-yellow text-brand-navy font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity" href="#">
+                Ver Retos
+            </a>
+</section>
+</main>
+
+</body></html>

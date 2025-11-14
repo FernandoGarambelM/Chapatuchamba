@@ -1,20 +1,121 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
-export default function App() {
+export default function Challenges() {
+  const challenges = [
+    {
+      id: 1,
+      company: "Unity Perú",
+      logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuDck_VoIv4Se1bxAxJPJuTm3p3hWcPWFRjZ3qgswKP4X7qjKse3Ol_Jf0O9NArbxfO_e3OehFvYT1XnqOymPAUNtSGslUyb7VVmTdtqHllINiG8hRh9Z-zWN8wL7cDnCr8vcBx_sBH9zorRpXHQ-ting-HJF-e_zCMXkZfgIuntgEJTaQ7Jx08s3wuGfBbzf6AGCRoOlKyM3feXqmvxZ5nFLEv40RVbGuhECtHRMVxeO19K4r3H5Xqz7QwLDC84r99psMiZc7QL7JTj",
+      title: "Hackathon de Innovación - Acceso HighTech para Todos.",
+      prize: "Premio S/10 000",
+      category: "#tecnologia",
+      description: "En el Perú, muchos jóvenes universitarios de carreras técnicas e ingenierías no tienen ingresos propios y dependen económicamente de sus padres. ¿Cómo podríamos facilitar el acceso a formación de alta tecnología para estudiantes universitarios con recursos limitados en el Perú, asegurando que la solución sea rentable, escalable y simple?"
+    },
+    {
+      id: 2,
+      company: "Growth Strategy",
+      logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuBuN8Pu5Yufi00KPDk4cn_8DEacOeUzwjy-C-WCA1iysRWt0SGm4JhUJ14KCvroX2YNg_hvNTg8Hc3e5Y3BLRK9FacRrBh5Idik55bLZVvkKTDoAPuWxUaZ-dp9QcSP0s4EvceA2PedyOOFDTVF8ZzhfcjBqhHwIdafuGreseqSL2EzbKN5rspK1as61kYynyo8AAoavf-pDrP7KIJ6CCegH5dLNiM7-t6AOGbgiq_1v0dXfR9gXI4iBve1WwspV1mP9p8wwb2IUVNA",
+      title: "Diseñador UX UI - Diseños para Empresas",
+      prize: "Práctica",
+      category: "#tecnologia",
+      description: "Nuestra empresa, Growth Strategy, busca un Diseñador UX/UI en Arequipa para crear soluciones digitales simples y accesibles que faciliten el acceso a formación tecnológica para estudiantes con recursos limitados."
+    },
+    {
+      id: 3,
+      company: "FLIT Arequipa",
+      logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuAS9fGNo3NTlrjY_Dw5XlBwAYhK10qgXJz3zNePVKlPE4w3cFXZfVXLCIwEG3YPS4v2wQ8UKPiU-3pG2biTp_78r-19eQ88sjrwmJN6h8LdoRpwAR1j9OZfWWdo1yec0atOt5pKox4syo3HPpkUdSeZ77elMssMsX0UYfyx6SNekcLtMlZCSn9rNHTLdQFwv53BYArl5uYObIhGTNn8LuEBo2nidHxjKO8t9Iwr1l2czjAU8xWN3QT0ybXgubz68sLlD21SQugrGoYG",
+      title: "Programador web - Diseñador web",
+      prize: "Práctica",
+      category: "#tecnologia",
+      description: "Nuestra empresa, FLIT Arequipa, busca un Programador Web - Diseñador Web para apoyar el desarrollo de soluciones digitales del evento FLIT Arequipa que se realiza cada junio, impulsando herramientas simples y accesibles para estudiantes con recursos limitados."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6 flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-xl">
-        <h1 className="text-3xl font-bold mb-4">Retooooooos</h1>
-        <p className="text-gray-600">
-          Esta es una estructura básica para comenzar tu desarrollo en React.
-        </p>
+    <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-white text-[#0F2C4E]">
+      <header className="bg-[#0F2C4E] shadow-md">
+        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-10">
+            <Link to="/index" className="flex items-center space-x-3">
+              <div className="bg-[#0F2C4E] p-1 rounded-full">
+                <img alt="Chapa Tu Chamba Logo" className="h-10 w-10" src={logo} />
+              </div>
+              <span className="text-white text-lg font-bold tracking-wider">CHAPA TU CHAMBA</span>
+            </Link>
+            <div className="hidden md:flex items-center space-x-8 text-white">
+              <Link to="/courses" className="hover:text-[#FFC72C] transition-colors">Cursos</Link>
+              <Link to="/challenges" className="text-white font-semibold relative py-1">
+                Retos
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FFC72C]"></span>
+              </Link>
+              <Link to="/challenges/form" className="hover:text-[#FFC72C] transition-colors">Publica un Reto</Link>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Link to="/login" className="hidden md:block text-white border border-white rounded-md px-5 py-2 text-sm font-semibold hover:bg-white hover:text-[#0F2C4E] transition-colors">
+              Iniciar Sesión
+            </Link>
+            <Link to="/signup" className="bg-[#FFC72C] text-[#0F2C4E] rounded-md px-5 py-2 text-sm font-semibold hover:opacity-90 transition-opacity">
+              Registrarse
+            </Link>
+          </div>
+        </nav>
+      </header>
 
-        <div className="mt-6">
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-            Acción
-          </button>
-        </div>
-      </div>
+      <main>
+        <section className="bg-white dark:bg-[#111827] py-16 sm:py-24">
+          <div className="container mx-auto px-6 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+              <span className="text-[#0F2C4E] dark:text-gray-100">Participa de los retos y aprende lo que el</span><br />
+              <span className="text-[#FFC72C] relative inline-block">
+                Mercado Tecnológico Necesita
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#FFC72C]/80"></span>
+              </span>
+            </h1>
+            <p className="mt-8 max-w-2xl mx-auto text-lg text-[#6B7280] dark:text-gray-400">
+              Muchas veces lo aprendido a clases ya no es suficiente, atrévete a aprender con proyectos reales de la industria.
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-white dark:bg-[#111827] pb-20 sm:pb-28">
+          <div className="container mx-auto px-6">
+            <div className="mb-12 max-w-2xl">
+              <h2 className="text-3xl font-bold text-[#0F2C4E] dark:text-gray-100">Retos Planteados</h2>
+              <p className="mt-4 text-[#6B7280] dark:text-gray-400">
+                Explora entre todos los retos que tenemos para ti, mientras aprendes de la industria tecnológica
+              </p>
+            </div>
+            <div className="space-y-6">
+              {challenges.map((challenge) => (
+                <div key={challenge.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                  <div className="flex-grow">
+                    <div className="flex items-center space-x-4 mb-3">
+                      <img alt={`${challenge.company} Logo`} className="h-10 w-10 object-contain" src={challenge.logo} />
+                      <span className="text-[#6B7280] dark:text-gray-400 font-medium">{challenge.company}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0F2C4E] dark:text-gray-100 mb-2">{challenge.title}</h3>
+                    <div className="flex items-center space-x-2 mb-4">
+                      <span className="text-xs font-semibold text-[#0F2C4E] bg-[#FFC72C] px-3 py-1 rounded-full">{challenge.prize}</span>
+                      <span className="text-xs font-semibold text-green-800 dark:text-green-300 bg-green-100 dark:bg-green-900 px-3 py-1 rounded-full">{challenge.category}</span>
+                    </div>
+                    <p className="text-[#6B7280] dark:text-gray-400 text-sm leading-relaxed">
+                      {challenge.description}
+                    </p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <button className="w-full md:w-auto bg-[#FFC72C] text-[#0F2C4E] rounded-md px-8 py-3 font-semibold hover:opacity-90 transition-opacity">
+                      Ver Reto
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
