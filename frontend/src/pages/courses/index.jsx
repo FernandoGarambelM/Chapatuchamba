@@ -57,12 +57,12 @@ export default function Courses() {
               Porque todo lo que necesitas para brillar, es una oportunidad para aprender.
             </p>
           </div>
-          {/* Círculo amarillo con llama */}
-          <div className="absolute top-0 right-0 -translate-y-1/4 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-[#FFC72C] rounded-full flex items-center justify-center">
+          {/* Círculo amarillo con llama - absoluto en desktop, relativo en mobile */}
+          <div className="mt-8 mx-auto w-48 h-48 md:absolute md:top-0 md:right-0 md:-translate-y-1/4 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80 bg-[#FFC72C] rounded-full flex items-center justify-center overflow-hidden">
             <img 
               src={llamaLaptop} 
               alt="Llama con laptop" 
-              className="relative z-10 w-64 md:w-80 lg:w-96"
+              className="relative z-10 w-full h-auto max-w-[150%] object-contain"
             />
           </div>
         </section>
