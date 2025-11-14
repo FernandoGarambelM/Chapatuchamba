@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Header from "../../components/Header";
 
 export default function ChallengeRegistration() {
   const [formData, setFormData] = useState({
@@ -25,34 +25,7 @@ export default function ChallengeRegistration() {
 
   return (
     <div style={{ fontFamily: 'Lexend, "Noto Sans", sans-serif', backgroundColor: '#E5E5E5' }}>
-      <header className="sticky top-0 z-50 bg-[#0F2C4E] text-white shadow-md">
-        <div className="container mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-10">
-            <Link to="/index" className="flex items-center gap-3">
-              <div className="flex size-10 items-center justify-center rounded-full bg-[#0F2C4E]">
-                <img alt="Chapa Tu Chamba Logo" className="h-10 w-10" src={logo} />
-              </div>
-              <h2 className="text-lg font-bold tracking-tight">CHAPA TU CHAMBA</h2>
-            </Link>
-            <nav className="hidden md:flex items-center gap-8">
-              <Link to="/courses" className="text-sm font-medium text-white/80 hover:text-white transition-colors">Cursos</Link>
-              <Link to="/challenges" className="relative text-sm font-medium text-white">
-                Retos
-                <span className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-[#FFC72C]"></span>
-              </Link>
-              <Link to="/challenges/form" className="text-sm font-medium text-white/80 hover:text-white transition-colors">Publica un Reto</Link>
-            </nav>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link to="/login" className="flex items-center justify-center rounded-full h-10 px-6 bg-transparent text-white text-sm font-bold border border-white hover:bg-white/10 transition-colors">
-              Iniciar Sesión
-            </Link>
-            <Link to="/signup" className="flex items-center justify-center rounded-full h-10 px-6 bg-[#FFC72C] text-[#0F2C4E] text-sm font-bold hover:scale-105 transition-transform">
-              Registrarse
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex flex-1 justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-3xl">

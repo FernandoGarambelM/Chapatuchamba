@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Header from "../../components/Header";
 import llamaLaptop from "../../assets/llama-laptop.png";
 
 export default function Courses() {
@@ -45,27 +45,7 @@ export default function Courses() {
 
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif' }} className="bg-white text-[#0F2C4E]">
-      <header className="bg-[#0F2C4E] text-white">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-10">
-            <Link to="/index" className="flex items-center space-x-3">
-              <div className="bg-[#0F2C4E] p-1 rounded-full flex items-center justify-center">
-                <img alt="Chapa Tu Chamba logo of a llama with a hard hat" className="h-10 w-10" src={logo} />
-              </div>
-              <span className="font-bold text-lg hidden sm:block">CHAPA TU CHAMBA</span>
-            </Link>
-            <ul className="hidden md:flex items-center space-x-8">
-              <li><Link to="/courses" className="text-[#FFC72C] font-semibold border-b-2 border-[#FFC72C] pb-1">Cursos</Link></li>
-              <li><Link to="/challenges" className="hover:text-[#FFC72C] transition-colors">Retos</Link></li>
-              <li><Link to="/challenges/form" className="hover:text-[#FFC72C] transition-colors">Publica un Reto</Link></li>
-            </ul>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/login" className="text-white border border-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-white hover:text-[#0F2C4E] transition-colors">Iniciar Sesión</Link>
-            <Link to="/signup" className="bg-[#FFC72C] text-[#0F2C4E] rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity">Registrarse</Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main className="container mx-auto px-6 py-16 sm:py-24">
         <section className="relative mb-20 md:mb-32">
