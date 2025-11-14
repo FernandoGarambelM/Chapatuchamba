@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 export default function ChallengeRegistration() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -20,7 +23,18 @@ export default function ChallengeRegistration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Guardar inscripción en localStorage
+    const registeredChallenges = JSON.parse(localStorage.getItem('registeredChallenges') || '[]');
+    if (!registeredChallenges.includes(id)) {
+      registeredChallenges.push(id);
+      localStorage.setItem('registeredChallenges', JSON.stringify(registeredChallenges));
+    }
+    
     console.log("Form submitted:", formData);
+    
+    // Redirigir a la página de retos
+    navigate('/challenges');
   };
 
   return (

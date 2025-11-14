@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 export default function Challenges() {
+  const [registeredChallenges, setRegisteredChallenges] = useState([]);
+
+  useEffect(() => {
+    // Cargar retos inscritos desde localStorage
+    const registered = JSON.parse(localStorage.getItem('registeredChallenges') || '[]');
+    setRegisteredChallenges(registered);
+  }, []);
+
   const challenges = [
     {
       id: 1,
@@ -89,32 +97,48 @@ export default function Challenges() {
               </p>
             </div>
             <div className="space-y-6">
-              {challenges.map((challenge) => (
-                <div key={challenge.id} style={{ backgroundColor: '#FFFFFF' }} className="rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
-                  <div className="flex-grow">
-                    <div className="flex items-center space-x-4 mb-3">
-                      <img alt={`${challenge.company} Logo`} className="h-10 w-10 object-contain" src={challenge.logo} />
-                      <span style={{ color: '#6B7280' }} className="font-medium">{challenge.company}</span>
+              {challenges.map((challenge) => {
+                const isRegistered = registeredChallenges.includes(challenge.id.toString());
+                
+                return (
+                  <div key={challenge.id} style={{ backgroundColor: '#FFFFFF' }} className="rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <div className="flex-grow">
+                      <div className="flex items-center space-x-4 mb-3">
+                        <img alt={`${challenge.company} Logo`} className="h-10 w-10 object-contain" src={challenge.logo} />
+                        <span style={{ color: '#6B7280' }} className="font-medium">{challenge.company}</span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2" style={{ color: '#0F2C4E' }}>{challenge.title}</h3>
+                      <div className="flex items-center space-x-2 mb-4">
+                        <span className="text-xs font-semibold text-[#0F2C4E] bg-[#FFC72C] px-3 py-1 rounded-full">{challenge.prize}</span>
+                        <span className="text-xs font-semibold text-green-800 bg-green-100 px-3 py-1 rounded-full">{challenge.category}</span>
+                      </div>
+                      <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
+                        {challenge.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold mb-2" style={{ color: '#0F2C4E' }}>{challenge.title}</h3>
-                    <div className="flex items-center space-x-2 mb-4">
-                      <span className="text-xs font-semibold text-[#0F2C4E] bg-[#FFC72C] px-3 py-1 rounded-full">{challenge.prize}</span>
-                      <span className="text-xs font-semibold text-green-800 bg-green-100 px-3 py-1 rounded-full">{challenge.category}</span>
+                    <div className="flex-shrink-0">
+                      {isRegistered ? (
+                        <div className="flex flex-col items-center gap-2">
+                          <span className="text-green-600 font-semibold text-sm">✓ Ya te inscribiste</span>
+                          <Link 
+                            to={`/challenges/${challenge.id}`}
+                            className="block w-full md:w-auto bg-gray-300 text-gray-600 rounded-md px-8 py-3 font-semibold cursor-not-allowed text-center"
+                          >
+                            Ver Reto
+                          </Link>
+                        </div>
+                      ) : (
+                        <Link 
+                          to={`/challenges/${challenge.id}`}
+                          className="block w-full md:w-auto bg-[#FFC72C] text-[#0F2C4E] rounded-md px-8 py-3 font-semibold hover:opacity-90 transition-opacity text-center"
+                        >
+                          Ver Reto
+                        </Link>
+                      )}
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
-                      {challenge.description}
-                    </p>
                   </div>
-                  <div className="flex-shrink-0">
-                    <Link 
-                      to={`/challenges/${challenge.id}`}
-                      className="block w-full md:w-auto bg-[#FFC72C] text-[#0F2C4E] rounded-md px-8 py-3 font-semibold hover:opacity-90 transition-opacity text-center"
-                    >
-                      Ver Reto
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

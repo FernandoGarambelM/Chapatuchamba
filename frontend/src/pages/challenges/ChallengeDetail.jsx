@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 export default function ChallengeDetail() {
   const { id } = useParams();
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    // Verificar si ya está inscrito
+    const registeredChallenges = JSON.parse(localStorage.getItem('registeredChallenges') || '[]');
+    setIsRegistered(registeredChallenges.includes(id));
+  }, [id]);
 
   // Datos de ejemplo - aquí podrías hacer fetch según el id
   const challenge = {
@@ -100,12 +107,24 @@ export default function ChallengeDetail() {
             </div>
 
             <div className="flex justify-end">
-              <Link
-                to={`/challenges/${id}/register`}
-                className="bg-[#FFC72C] text-[#0F2C4E] font-bold py-3 px-8 rounded-lg text-base shadow-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
-              >
-                Inscribirse
-              </Link>
+              {isRegistered ? (
+                <div className="text-center">
+                  <p className="text-green-600 font-bold text-lg mb-3">✓ Ya te inscribiste en este reto</p>
+                  <button
+                    disabled
+                    className="bg-gray-300 text-gray-600 font-bold py-3 px-8 rounded-lg text-base shadow-md cursor-not-allowed"
+                  >
+                    Ya Inscrito
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to={`/challenges/${id}/register`}
+                  className="bg-[#FFC72C] text-[#0F2C4E] font-bold py-3 px-8 rounded-lg text-base shadow-md hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+                >
+                  Inscribirse
+                </Link>
+              )}
             </div>
           </div>
         </div>
