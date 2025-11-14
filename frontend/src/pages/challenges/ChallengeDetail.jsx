@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Header from "../../components/Header";
 
 export default function ChallengeDetail() {
   const { id } = useParams();
@@ -25,48 +25,7 @@ export default function ChallengeDetail() {
 
   return (
     <div style={{ fontFamily: 'Inter, sans-serif', backgroundColor: '#FFFFFF' }}>
-      <header className="bg-[#0F2C4E] shadow-lg">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-10">
-              <Link to="/index" className="flex items-center space-x-3">
-                <div className="bg-[#0F2C4E] p-1 rounded-full">
-                  <img alt="Logo de Chapa Tu Chamba" className="h-10 w-10" src={logo} />
-                </div>
-                <span className="text-white font-bold text-lg">CHAPA TU CHAMBA</span>
-              </Link>
-              <div className="hidden md:flex items-center space-x-8 text-white">
-                <Link to="/courses" className="hover:text-[#FFC72C] transition-colors duration-300">
-                  Cursos
-                </Link>
-                <Link 
-                  to="/challenges" 
-                  className="relative font-semibold text-white after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-[#FFC72C]"
-                >
-                  Retos
-                </Link>
-                <Link to="/challenges/form" className="hover:text-[#FFC72C] transition-colors duration-300">
-                  Publica un Reto
-                </Link>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <Link 
-                to="/login" 
-                className="px-5 py-2 text-sm font-medium text-white bg-[#0F2C4E] border border-white rounded-lg hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300"
-              >
-                Iniciar Sesión
-              </Link>
-              <Link 
-                to="/signup" 
-                className="px-5 py-2 text-sm font-bold text-[#0F2C4E] bg-[#FFC72C] rounded-lg hover:opacity-90 transition-opacity duration-300"
-              >
-                Registrarse
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main className="py-12 sm:py-16">
         <div className="container mx-auto px-6 max-w-4xl">

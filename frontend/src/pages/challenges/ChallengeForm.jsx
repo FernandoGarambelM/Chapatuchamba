@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Header from "../../components/Header";
 
 export default function ChallengeForm() {
   const [formData, setFormData] = useState({
@@ -51,27 +51,7 @@ export default function ChallengeForm() {
 
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#E5E5E5' }}>
-      <header className="bg-[#0F2C4E] shadow-md">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-8">
-            <Link to="/index" className="flex items-center space-x-3">
-              <div className="bg-[#0F2C4E] p-1 rounded-full">
-                <img alt="Chapa Tu Chamba Logo" className="h-10 w-10" src={logo} />
-              </div>
-              <span className="text-white text-xl font-bold tracking-wider">CHAPA TU CHAMBA</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-6">
-              <Link to="/courses" className="text-gray-300 hover:text-white transition-colors duration-200">Cursos</Link>
-              <Link to="/challenges" className="text-gray-300 hover:text-white transition-colors duration-200">Retos</Link>
-              <Link to="/challenges/form" className="text-white font-semibold border-b-2 border-[#FFC72C] pb-1">Publica un Reto</Link>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login" className="px-5 py-2 text-sm font-medium text-white border border-white rounded-lg hover:bg-white hover:text-[#0F2C4E] transition-colors duration-300">Iniciar Sesión</Link>
-            <Link to="/signup" className="px-5 py-2 text-sm font-medium text-gray-900 rounded-lg hover:opacity-90 transition-opacity duration-300">Registrarse</Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main className="py-12 md:py-16">
         <div className="container mx-auto px-4">

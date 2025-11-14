@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Header from "../../components/Header";
 
 export default function Challenges() {
   const [registeredChallenges, setRegisteredChallenges] = useState([]);
@@ -43,34 +43,7 @@ export default function Challenges() {
 
   return (
     <div style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#FFFFFF' }} className="text-[#0F2C4E]">
-      <header className="bg-[#0F2C4E] shadow-md">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-10">
-            <Link to="/index" className="flex items-center space-x-3">
-              <div className="bg-[#0F2C4E] p-1 rounded-full">
-                <img alt="Chapa Tu Chamba Logo" className="h-10 w-10" src={logo} />
-              </div>
-              <span className="text-white text-lg font-bold tracking-wider">CHAPA TU CHAMBA</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8 text-white">
-              <Link to="/courses" className="hover:text-[#FFC72C] transition-colors">Cursos</Link>
-              <Link to="/challenges" className="text-white font-semibold relative py-1">
-                Retos
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FFC72C]"></span>
-              </Link>
-              <Link to="/challenges/form" className="hover:text-[#FFC72C] transition-colors">Publica un Reto</Link>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link to="/login" className="hidden md:block text-white border border-white rounded-md px-5 py-2 text-sm font-semibold hover:bg-white hover:text-[#0F2C4E] transition-colors">
-              Iniciar Sesión
-            </Link>
-            <Link to="/signup" className="bg-[#FFC72C] text-[#0F2C4E] rounded-md px-5 py-2 text-sm font-semibold hover:opacity-90 transition-opacity">
-              Registrarse
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main>
         <section style={{ backgroundColor: '#FFFFFF' }} className="py-16 sm:py-24">
