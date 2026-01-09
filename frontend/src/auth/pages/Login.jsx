@@ -17,10 +17,11 @@ export default function Login() {
     setError(null)
     try {
       const response = await authAPI.login({ email, password })
-      
+      const data = response.data
       // Guardar token y datos de usuario
-      localStorage.setItem('authToken', response.token)
-      localStorage.setItem('userData', JSON.stringify(response.user))
+      localStorage.setItem('authToken', data.token)
+      localStorage.setItem('email', data.email)
+      localStorage.setItem('role', data.role)
       
       // Redirigir al dashboard o home
       navigate('/')

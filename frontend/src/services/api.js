@@ -1,7 +1,7 @@
 // Configuración base de la API
 const API_CONFIG = {
   // Configuración por defecto para desarrollo
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api',
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/',
   TIMEOUT: 10000,
   HEADERS: {
     'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ const apiService = new ApiService()
 
 // Métodos de autenticación
 export const authAPI = {
-  // Login clásico - POST /api/auth/login
+  // Login clásico - POST auth/login
   login: async (credentials) => {
     return await apiService.post('/auth/login', {
       email: credentials.email,
@@ -88,7 +88,7 @@ export const authAPI = {
     })
   },
 
-  // Registro de estudiante - POST /api/auth/register/student
+  // Registro de estudiante - POST /auth/register/student
   registerStudent: async (userData) => {
     return await apiService.post('/auth/register/student', {
       name: userData.name,
