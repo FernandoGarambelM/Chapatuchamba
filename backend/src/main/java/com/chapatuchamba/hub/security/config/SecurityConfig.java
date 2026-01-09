@@ -70,11 +70,17 @@ public class SecurityConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        // Permitir todo (para evitar errores de CORS con Vercel)
-        config.setAllowedOriginPatterns(List.of("*"));
+
+        // ⚠️ AQUÍ ESTÁ LA CLAVE: Pon la URL exacta de tu Vercel (sin barra al final)
+        config.setAllowedOrigins(List.of(
+                "https://chapatuchamba-oys3.vercel.app", // Tu Vercel
+                "http://localhost:5173", // Tu Localhost Vite
+                "http://localhost:3000" // Tu Localhost alternativo
+        ));
+
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
+        config.setAllowCredentials(true); // Esto es vital para que viajen los tokens/cookies
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
