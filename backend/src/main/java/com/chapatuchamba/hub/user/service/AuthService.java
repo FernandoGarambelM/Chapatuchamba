@@ -80,10 +80,34 @@ public class AuthService {
         String token = tokenProvider.generateToken(authentication);
         User user = userRepository.findByEmail(email).orElseThrow();
 
+        // Construir el DTO de datos según el tipo de usuario
+        UserDto.UserDtoBuilder userDtoBuilder = UserDto.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .role(user.getRole().name());
+
+        if (user instanceof Student) {
+            Student student = (Student) user;
+            userDtoBuilder
+                    .name(student.getName())
+                    .university(student.getUniversity())
+                    .major(student.getMajor())
+                    .bio(student.getBio())
+                    .globalScore(student.getGlobalScore());
+        } else if (user instanceof Company) {
+            Company company = (Company) user;
+            userDtoBuilder
+                    .companyName(company.getCompanyName())
+                    .sector(company.getSector())
+                    .ruc(company.getRuc())
+                    .description(company.getDescription())
+                    .isVerified(company.getIsVerified());
+        }
+
+        // Retornar la respuesta con el token y los datos completos
         return AuthResponse.builder()
                 .token(token)
-                .email(user.getEmail())
-                .role(user.getRole().name())
+                .userData(userDtoBuilder.build())
                 .build();
     }
 }
