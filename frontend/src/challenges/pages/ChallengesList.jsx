@@ -1,97 +1,100 @@
 import React, { useState, useEffect } from 'react'
 import { ChallengeCard, Button } from '../../shared/components'
+import { fetchChallenges } from '../services'
 
 export default function ChallengesList() {
   const [challenges, setChallenges] = useState([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('todos')
   const [searchTerm, setSearchTerm] = useState('')
+  const [error, setError] = useState(null)
 
-  // Datos de ejemplo para los retos
-  const sampleChallenges = [
-    {
-      id: 1,
-      title: "Desarrollador Frontend React",
-      company: "TechCorp",
-      description: "Buscamos desarrollador con experiencia en React y TypeScript para proyecto innovador de plataforma web.",
-      technologies: ["React", "TypeScript", "Tailwind"],
-      price: "$2,500",
-      opportunityType: "Contratación",
-      location: "Lima, Perú",
-      duration: "3 meses",
-      difficulty: "Intermedio",
-      icon: '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/></svg>'
-    },
-    {
-      id: 2,
-      title: "Diseñador UX/UI",
-      company: "StartupXYZ",
-      description: "Únete a nuestro equipo para crear experiencias digitales excepcionales en productos SaaS.",
-      technologies: ["Figma", "Sketch", "Adobe XD"],
-      price: "$1,800",
-      opportunityType: "Pasantía",
-      location: "Remoto",
-      duration: "6 meses",
-      difficulty: "Junior",
-      icon: '<svg fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"/></svg>'
-    },
-    {
-      id: 3,
-      title: "Desarrollador Backend Python",
-      company: "DataFlow Inc",
-      description: "Desarrollo de APIs y microservicios para plataforma de análisis de datos en tiempo real.",
-      technologies: ["Python", "Django", "PostgreSQL"],
-      price: "$3,200",
-      opportunityType: "Prácticas",
-      location: "Arequipa, Perú",
-      duration: "4 meses",
-      difficulty: "Avanzado",
-      icon: '<svg fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"/></svg>'
-    },
-    {
-      id: 4,
-      title: "Analista de Datos",
-      company: "InnovateLab",
-      description: "Análisis y visualización de datos para toma de decisiones estratégicas en startup fintech.",
-      technologies: ["Python", "R", "Power BI"],
-      price: "$2,000",
-      opportunityType: "Contratación",
-      location: "Cusco, Perú",
-      duration: "Permanente",
-      difficulty: "Intermedio",
-      icon: '<svg fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"/><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"/></svg>'
-    }
-  ]
-
+  // Cargar challenges desde la API
   useEffect(() => {
-    // Simular carga de datos
-    setTimeout(() => {
-      setChallenges(sampleChallenges)
-      setLoading(false)
-    }, 1000)
+    loadChallenges()
   }, [])
 
+  const loadChallenges = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const data = await fetchChallenges()
+      setChallenges(data)
+    } catch (error) {
+      console.error('Error loading challenges:', error)
+      setError('Error al cargar los retos. Por favor, intenta de nuevo.')
+      
+      // Fallback: usar datos de ejemplo si falla la API
+      const sampleChallenges = [
+        {
+          id: 1,
+          title: "Desarrollador Frontend React",
+          companyName: "TechCorp",
+          description: "Buscamos desarrollador con experiencia en React y TypeScript para proyecto innovador de plataforma web.",
+          status: "ACTIVE",
+          startDate: "2026-01-09",
+          endDate: "2026-03-09"
+        },
+        {
+          id: 2,
+          title: "Diseñador UX/UI",
+          companyName: "StartupXYZ", 
+          description: "Únete a nuestro equipo para crear experiencias digitales excepcionales en productos SaaS.",
+          status: "ACTIVE",
+          startDate: "2026-01-09",
+          endDate: "2026-07-09"
+        },
+        {
+          id: 3,
+          title: "Desarrollador Backend Python",
+          companyName: "DataFlow Inc",
+          description: "Desarrollo de APIs y microservicios para plataforma de análisis de datos en tiempo real.",
+          status: "ACTIVE", 
+          startDate: "2026-01-09",
+          endDate: "2026-05-09"
+        }
+      ]
+      setChallenges(sampleChallenges)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
   const filteredChallenges = challenges.filter(challenge => {
-    // Filtro por tipo de oportunidad
-    const matchesFilter = filter === 'todos' || challenge.opportunityType.toLowerCase() === filter
+    // Filtro por status
+    const matchesFilter = filter === 'todos' || challenge.status === filter
     
-    // Filtro por búsqueda (título, empresa, tecnologías)
+    // Filtro por búsqueda (título, empresa)
     const matchesSearch = searchTerm === '' || 
       challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      challenge.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      challenge.technologies.some(tech => 
-        tech.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+      challenge.companyName.toLowerCase().includes(searchTerm.toLowerCase())
     
     return matchesFilter && matchesSearch
   })
 
   const filterOptions = [
     { value: 'todos', label: 'Todos los retos' },
-    { value: 'pasantía', label: 'Pasantías' },
-    { value: 'prácticas', label: 'Prácticas' },
-    { value: 'contratación', label: 'Contratación' }
+    { value: 'ACTIVE', label: 'Activos' },
+    { value: 'INACTIVE', label: 'Inactivos' },
+    { value: 'COMPLETED', label: 'Completados' }
   ]
+
+  // Mostrar mensaje de error si hay uno
+  if (error && !loading) {
+    return (
+      <div className="min-h-screen bg-neutral-50">
+        <div className="container mx-auto px-4 py-12">
+          <div className="text-center">
+            <div className="text-red-500 text-lg mb-4">{error}</div>
+            <Button onClick={loadChallenges} variant="primary">
+              Reintentar
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (loading) {
     return (

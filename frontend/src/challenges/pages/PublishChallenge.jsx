@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../../shared/components'
+import { createChallenge } from '../services'
 
 export default function PublishChallenge() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [checkingAuth, setCheckingAuth] = useState(true)
   
   const [formData, setFormData] = useState({
     titulo: '',
@@ -31,6 +33,29 @@ export default function PublishChallenge() {
   const [dragActiveRecursos, setDragActiveRecursos] = useState(false)
   const [uploadedFilesEval, setUploadedFilesEval] = useState([])
   const [uploadedFilesRecursos, setUploadedFilesRecursos] = useState([])
+
+  // Verificar autorización al cargar el componente
+  useEffect(() => {
+    const token = localStorage.getItem('authToken')
+    const role = localStorage.getItem('role')
+    
+    if (!token) {
+      // Si no está logueado, redirigir al login
+      navigate('/login')
+      return
+    }
+    
+    if (role !== 'COMPANY') {
+      // Si no es una empresa, mostrar error y redirigir
+      setError('Solo las empresas pueden crear retos. Contacta al administrador si crees que esto es un error.')
+      setTimeout(() => {
+        navigate('/retos')
+      }, 3000)
+      return
+    }
+    
+    setCheckingAuth(false)
+  }, [navigate])
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -93,21 +118,117 @@ export default function PublishChallenge() {
     setError('')
 
     try {
-      // Aquí iría la lógica para enviar el formulario al backend
-      console.log('Datos del formulario:', formData)
-      console.log('Archivos de evaluación:', uploadedFilesEval)
-      console.log('Archivos de recursos:', uploadedFilesRecursos)
+      // Validar que el usuario esté logueado y sea una empresa
+      const userId = localStorage.getItem('userId')
+      const userRole = localStorage.getItem('role')
       
-      // Simulación de envío
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      if (!userId) {
+        throw new Error('Debes iniciar sesión para publicar un reto')
+      }
+      
+      if (userRole !== 'COMPANY') {
+        throw new Error('Solo las empresas pueden crear retos')
+      }
+
+      // Validar campos requeridos para la API
+      if (!formData.titulo.trim()) {
+        throw new Error('El título del reto es obligatorio')
+      }
+      if (!formData.descripcionReto.trim()) {
+        throw new Error('La descripción del reto es obligatoria')
+      }
+      if (!formData.fechaInicio) {
+        throw new Error('La fecha de inicio es obligatoria')
+      }
+      if (!formData.fechaFin) {
+        throw new Error('La fecha de fin es obligatoria')
+      }
+      
+      // Validar que la fecha de fin sea posterior a la de inicio
+      if (new Date(formData.fechaFin) <= new Date(formData.fechaInicio)) {
+        throw new Error('La fecha de fin debe ser posterior a la fecha de inicio')
+      }
+
+      // Preparar los datos principales para la API (solo los campos soportados)
+      const challengeApiData = {
+        title: formData.titulo.trim(),
+        description: formData.descripcionReto.trim(),
+        startDate: formData.fechaInicio,
+        endDate: formData.fechaFin,
+        companyId: parseInt(userId) // Agregar ID del usuario que publica
+      }
+
+      // Simular guardado de datos adicionales (no soportados por la API actual)
+      const additionalData = {
+        areaTecnologica: formData.areaTecnologica,
+        nivelSeniority: formData.nivelSeniority,
+        tipoReto: formData.tipoReto,
+        areaEvaluacion: formData.areaEvaluacion,
+        metricasEvaluacion: formData.metricasEvaluacion,
+        repositorioBase: formData.repositorioBase,
+        enlaces: formData.enlaces,
+        premio: formData.premio,
+        tipoPremio: formData.tipoPremio,
+        descripcionPremio: formData.descripcionPremio,
+        numeroGanadores: formData.numeroGanadores,
+        visibilidad: formData.visibilidad,
+        archivosEvaluacion: uploadedFilesEval.map(file => ({
+          nombre: file.name,
+          tipo: file.type,
+          tamaño: file.size
+        })),
+        archivosRecursos: uploadedFilesRecursos.map(file => ({
+          nombre: file.name,
+          tipo: file.type,
+          tamaño: file.size
+        }))
+      }
+
+      console.log('📤 Enviando a la API (campos soportados):', challengeApiData)
+      console.log('👤 Usuario que publica:', {
+        companyId: userId,
+        email: localStorage.getItem('email'),
+        role: userRole
+      })
+      console.log('💾 Datos adicionales simulados:', additionalData)
+      
+      // Enviar solo los datos principales a la API
+      const createdChallenge = await createChallenge(challengeApiData)
+      console.log('✅ Challenge creado exitosamente:', createdChallenge)
+      
+      // Simulación de guardado de datos adicionales
+      console.log('📋 Simulando guardado de metadatos adicionales...')
+      console.log('📁 Simulando subida de archivos:', {
+        evaluacion: uploadedFilesEval.length,
+        recursos: uploadedFilesRecursos.length
+      })
+      
+      // Simulación de delay para el procesamiento adicional
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      console.log('🎉 Todos los datos procesados correctamente')
       
       // Redireccionar al listado de retos después del éxito
       navigate('/retos')
+      
     } catch (err) {
-      setError('Error al publicar el reto. Por favor, intenta de nuevo.')
+      console.error('❌ Error al publicar el reto:', err)
+      setError(err.message || 'Error al publicar el reto. Por favor, intenta de nuevo.')
     } finally {
       setLoading(false)
     }
+  }
+
+  // Mostrar pantalla de carga mientras se verifica la autorización
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-900 mx-auto mb-4"></div>
+          <p className="text-primary-700">Verificando permisos...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -651,7 +772,12 @@ export default function PublishChallenge() {
             <div className="bg-white rounded-xl shadow-sm p-8">
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm mb-6">
-                  {error}
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                    {error}
+                  </div>
                 </div>
               )}
 

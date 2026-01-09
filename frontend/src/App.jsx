@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Login from './auth/pages/Login'
-import Register from './auth/pages/Register'
+import { Login, Register, Profile } from './auth/pages'
 import { Home } from './home'
 import { ChallengesList, PublishChallenge, ChallengeDetail } from './challenges'
 import { Layout } from './shared/components'
@@ -44,6 +43,13 @@ export default function App() {
         <Route path="/register" element={
           <Layout showNavbar={false} showFooter={false}>
             <Register />
+          </Layout>
+        } />
+        
+        {/* Ruta de perfil con navbar */}
+        <Route path="/perfil" element={
+          <Layout showNavbar={true}>
+            <Profile />
           </Layout>
         } />
       </Routes>
