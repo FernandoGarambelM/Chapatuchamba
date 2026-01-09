@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { default as Button } from './Button'
 
 const ChallengeCard = ({ 
@@ -57,9 +58,11 @@ const ChallengeCard = ({
               </span>
             </div>
           </div>
-          <Button variant="primary" size="small" className="w-full flex ">
-            Ver Detalles
-          </Button>
+          <Link to={`/retos/${id}`}>
+            <Button variant="primary" size="small" className="w-full flex ">
+              Ver Detalles
+            </Button>
+          </Link>
         </div>
       </div>
     )
@@ -107,9 +110,11 @@ const ChallengeCard = ({
                 {technology}
               </span>
             </div>
-            <Button variant="primary" size="small">
-              Ver Detalles
-            </Button>
+            <Link to={`/retos/${id}`}>
+              <Button variant="primary" size="small">
+                Ver Detalles
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -37,13 +37,13 @@ export default function Navbar() {
           {/* Links de navegación en el centro */}
           <div className="hidden md:flex items-center space-x-8">
             <Link 
-              to="/empleos" 
+              to="/retos" 
               className="text-neutral-50 hover:text-secondary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
               Retos
             </Link>
             <Link 
-              to="/empresas" 
+              to="/retos/publicar" 
               className="text-neutral-50 hover:text-secondary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
               Publica un Reto

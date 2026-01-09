@@ -60,6 +60,14 @@ export default function Login() {
               <h1 className="text-3xl font-bold text-primary-900 mb-2">
                 ChapaTuChamba
               </h1>
+              {/* Componente Llama dentro de la carta */}
+                <div className="flex justify-center mb-6 mx-[20%]">
+                <LlamaImage 
+                    imageSrc="/images/LLAMA FELIZ.png"
+                    altText="Llama feliz de ChapaTuChamba"
+                    className="max-w-20"
+                />
+                </div>
               <p className="text-lg text-primary-700 mb-4">
                 ¡Bienvenido!
               </p>
@@ -75,14 +83,7 @@ export default function Login() {
                 </Link>
               </div>
             </div>
-            {/* Componente Llama dentro de la carta */}
-            <div className="flex justify-center mb-6">
-              <LlamaImage 
-                imageSrc="/images/LLAMA FELIZ.png"
-                altText="Llama feliz de ChapaTuChamba"
-                className="max-w-xs"
-              />
-            </div>
+            <div className="border-t border-neutral-300 mb-8" />
 
             {!showEmailForm ? (
               /* Vista inicial - Solo botones sociales */

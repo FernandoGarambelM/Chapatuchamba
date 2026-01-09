@@ -1,10 +1,3 @@
-import React from 'react'
-
-export default function ChallengesPagesPlaceholder() {
-  return (
-    <div>
-      <h2>Challenges — Pages (placeholder)</h2>
-      <p>Aquí irán las páginas de retos (lista, detalle, crear...)</p>
-    </div>
-  )
-}
+export { default as ChallengesList } from './ChallengesList.jsx'
+export { default as PublishChallenge } from './PublishChallenge.jsx'
+export { default as ChallengeDetail } from './ChallengeDetail.jsx'
