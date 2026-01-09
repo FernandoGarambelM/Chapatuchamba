@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login } from '../services'
+import { authAPI } from '../services'
 import { Button, LlamaImage } from '../../shared/components'
 
 export default function Login() {
@@ -16,11 +16,17 @@ export default function Login() {
     setLoading(true)
     setError(null)
     try {
-      const res = await login({ email, password })
-      // placeholder: manejar token/respuesta (guardar en storage, redirigir, etc.)
-      console.log('login result', res)
-    } catch (err) {
-      setError(err.message || 'Error en login')
+      const response = await authAPI.login({ email, password })
+      
+      // Guardar token y datos de usuario
+      localStorage.setItem('authToken', response.token)
+      localStorage.setItem('userData', JSON.stringify(response.user))
+      
+      // Redirigir al dashboard o home
+      navigate('/')
+    } catch (error) {
+      console.error('Login failed:', error)
+      setError('Credenciales incorrectas. Por favor, intenta de nuevo.')
     } finally {
       setLoading(false)
     }

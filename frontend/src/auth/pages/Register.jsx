@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { register } from '../services'
+import { authAPI } from '../services'
 import { Button, LlamaImage } from '../../shared/components'
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    nombre: '',
+    name: '',
     email: '',
     password: '',
     carrera: '',
@@ -22,13 +22,14 @@ export default function Register() {
     setLoading(true)
     setError(null)
     try {
-      const res = await register(formData)
-      // placeholder: manejar resultado (redirigir a login, mostrar éxito, etc.)
-      console.log('register result', res)
-      // Redirigir al login después del registro exitoso
+      const response = await authAPI.registerStudent(formData)
+      
+      // Registro exitoso - redirigir al login
+      alert('¡Registro exitoso! Por favor, inicia sesión.')
       navigate('/login')
-    } catch (err) {
-      setError(err.message || 'Error en registro')
+    } catch (error) {
+      console.error('Registration failed:', error)
+      setError('Error en el registro. Por favor, verifica tus datos.')
     } finally {
       setLoading(false)
     }
@@ -154,18 +155,18 @@ export default function Register() {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="nombre" className="block text-sm font-medium text-primary-700 mb-1">
+                    <label htmlFor="name" className="block text-sm font-medium text-primary-700 mb-1">
                       Nombre completo
                     </label>
                     <input
-                      id="nombre"
-                      name="nombre"
+                      id="name"
+                      name="name"
                       type="text"
                       autoComplete="name"
                       required
                       className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
                       placeholder="Tu nombre completo"
-                      value={formData.nombre}
+                      value={formData.name}
                       onChange={handleInputChange}
                     />
                   </div>

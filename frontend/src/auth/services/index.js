@@ -1,13 +1,10 @@
-// Servicios relacionados con autenticación (API calls, token handling)
+// Servicios relacionados con autenticación - ahora usando la API configurada
+export { authAPI, challengesAPI } from '../../services/api'
 
-export async function login(credentials) {
-  // placeholder: reemplazar con llamada real
-  return Promise.resolve({ ok: true, data: { token: 'fake-token' } })
-}
-
-export async function logout() {
-  return Promise.resolve()
-}
+// Re-exportar métodos específicos para compatibilidad
+export const login = authAPI.login
+export const logout = authAPI.logout
+export const registerStudent = authAPI.registerStudent
 
 export async function register(payload) {
   // placeholder: reemplazar por llamada real a la API de registro
