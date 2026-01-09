@@ -1,27 +1,70 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-primary-900 shadow-sm border-b border-neutral-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex space-x-8 items-center">
-            <Link to="/" className="text-xl font-bold text-indigo-600">
+        <div className="flex justify-between items-center h-22">
+          {/* Logo a la izquierda */}
+          <div className="flex items-center">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mr-3 relative">
+              <img 
+                src="/images/logo.png" 
+                alt="ChapaTuChamba Logo" 
+                className="w-20 h-20  m-auto"
+                onError={(e) => {
+                  // Ocultar imagen y mostrar iniciales si hay error
+                  e.target.style.display = 'none';
+                  e.target.parentElement.querySelector('.logo-fallback').style.display = 'block';
+                }}
+                onLoad={(e) => {
+                  // Ocultar iniciales si la imagen carga correctamente
+                  e.target.parentElement.querySelector('.logo-fallback').style.display = 'none';
+                }}
+              />
+              {/* Fallback: Iniciales si no hay imagen */}
+              <span className="logo-fallback text-neutral-50 font-bold text-sm">
+                CT
+              </span>
+            </div>
+            <Link to="/" className="text-xl font-bold text-neutral-50">
               ChapaTuChamba
             </Link>
+          </div>
+
+          {/* Links de navegación en el centro */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link 
+              to="/empleos" 
+              className="text-neutral-50 hover:text-secondary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Retos
+            </Link>
+            <Link 
+              to="/empresas" 
+              className="text-neutral-50 hover:text-secondary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Publica un Reto
+            </Link>
+          </div>
+
+          {/* Botones de sesión a la derecha */}
+          <div className="flex items-center space-x-4">
             <Link 
               to="/login" 
-              className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-neutral-50 hover:text-neutral-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
-              Login
+              Iniciar Sesión
             </Link>
-            <Link 
+            <Button 
               to="/register"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+              variant="secondary"
+              size="medium"
             >
-              Register
-            </Link>
+              Registrarse
+            </Button>
           </div>
         </div>
       </div>
