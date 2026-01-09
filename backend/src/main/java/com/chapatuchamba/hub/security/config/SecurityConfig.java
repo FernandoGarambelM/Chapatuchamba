@@ -5,6 +5,7 @@ import com.chapatuchamba.hub.security.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -39,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // Login y Registro públicos
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Docs públicos
+                        .requestMatchers(HttpMethod.GET, "/challenges").permitAll() // Ver retos sin login
                         .anyRequest().authenticated() // El resto requiere Token
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
