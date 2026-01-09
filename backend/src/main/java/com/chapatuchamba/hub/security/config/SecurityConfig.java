@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilita CORS
                 .csrf(csrf -> csrf.disable()) // Desactiva CSRF (no necesario para APIs Stateless)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Login y Registro públicos
+                        .requestMatchers("/auth/**").permitAll() // Login y Registro públicos
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Docs públicos
                         .anyRequest().authenticated() // El resto requiere Token
                 )
@@ -70,7 +70,8 @@ public class SecurityConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:5173")); // Frontends permitidos
+        // Permitir todo (para evitar errores de CORS con Vercel)
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
