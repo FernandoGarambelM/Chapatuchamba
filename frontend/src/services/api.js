@@ -106,6 +106,7 @@ export const authAPI = {
     localStorage.removeItem('authToken')
     localStorage.removeItem('email')
     localStorage.removeItem('role')
+    localStorage.removeItem('userId')
     return { success: true }
   },
 
@@ -128,8 +129,11 @@ export const challengesAPI = {
   // Obtener reto por ID
   getById: (id) => apiService.get(`/challenges/${id}`),
 
-  // Crear nuevo reto
-  create: (challengeData) => apiService.post('/challenges', challengeData),
+  // Crear nuevo reto - companyId va como parámetro en la URL
+  create: (challengeData) => {
+    const { companyId, ...bodyData } = challengeData
+    return apiService.post(`/challenges?companyId=${companyId}`, bodyData)
+  },
 
   // Actualizar reto
   update: (id, challengeData) => apiService.put(`/challenges/${id}`, challengeData),

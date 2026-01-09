@@ -22,6 +22,7 @@ export default function Login() {
       localStorage.setItem('authToken', data.token)
       localStorage.setItem('email', data.email)
       localStorage.setItem('role', data.role)
+      localStorage.setItem('userId', data.userId || data.id || '1') // Guardar ID del usuario
       
       // Redirigir al dashboard o home
       navigate('/')

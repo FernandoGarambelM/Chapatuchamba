@@ -6,6 +6,7 @@ import { authAPI } from '../../auth/services'
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userEmail, setUserEmail] = useState('')
+  const [userRole, setUserRole] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)
   const navigate = useNavigate()
@@ -14,10 +15,12 @@ export default function Navbar() {
   useEffect(() => {
     const token = localStorage.getItem('authToken')
     const email = localStorage.getItem('email')
+    const role = localStorage.getItem('role')
     
     if (token && email) {
       setIsLoggedIn(true)
       setUserEmail(email)
+      setUserRole(role || '')
     }
   }, [])
 
@@ -41,6 +44,7 @@ export default function Navbar() {
       await authAPI.logout()
       setIsLoggedIn(false)
       setUserEmail('')
+      setUserRole('')
       setDropdownOpen(false)
       navigate('/')
     } catch (error) {
@@ -49,8 +53,10 @@ export default function Navbar() {
       localStorage.removeItem('authToken')
       localStorage.removeItem('email')
       localStorage.removeItem('role')
+      localStorage.removeItem('userId')
       setIsLoggedIn(false)
       setUserEmail('')
+      setUserRole('')
       navigate('/')
     }
   }
@@ -98,12 +104,15 @@ export default function Navbar() {
             >
               Retos
             </Link>
-            <Link 
-              to="/retos/publicar" 
-              className="text-neutral-50 hover:text-secondary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              Publica un Reto
-            </Link>
+            {/* Solo mostrar "Publica un Reto" si el usuario es una empresa */}
+            {isLoggedIn && userRole === 'COMPANY' && (
+              <Link 
+                to="/retos/publicar" 
+                className="text-neutral-50 hover:text-secondary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Publica un Reto
+              </Link>
+            )}
           </div>
 
           {/* Botones de sesión a la derecha */}

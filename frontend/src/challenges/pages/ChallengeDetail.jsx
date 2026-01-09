@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Button } from '../../shared/components'
+import { fetchChallenges } from '../services'
 
 export default function ChallengeDetail() {
   const { id } = useParams()
@@ -27,6 +28,24 @@ export default function ChallengeDetail() {
   const [uploadedFiles, setUploadedFiles] = useState([])
   const [submitting, setSubmitting] = useState(false)
 
+  // Función para mapear propiedades de la API a las del componente
+  const mapChallengeData = (challenge) => {
+    if (!challenge) return null
+    return {
+      ...challenge,
+      titulo: challenge.title,
+      empresa: challenge.companyName,
+      descripcion: challenge.description,
+      fechaFin: challenge.endDate,
+      fechaInicio: challenge.startDate,
+      estado: challenge.status === 'ACTIVE' ? 'activo' : 
+              challenge.status === 'COMPLETED' ? 'finalizado' : 'inactivo'
+    }
+  }
+
+  // Función para obtener el challenge mapeado
+  const getMappedChallenge = () => mapChallengeData(challenge)
+
   useEffect(() => {
     fetchChallengeDetail()
   }, [id])
@@ -49,57 +68,87 @@ export default function ChallengeDetail() {
 
   // Effect para actualizar el countdown cada segundo
   useEffect(() => {
-    if (challenge && challenge.estado === 'activo') {
+    if (challenge && challenge.status === 'ACTIVE') {
       const timer = setInterval(() => {
-        setTimeLeft(calculateTimeLeft(challenge.fechaFin))
+        setTimeLeft(calculateTimeLeft(challenge.endDate))
       }, 1000)
 
       // Calcular tiempo inicial
-      setTimeLeft(calculateTimeLeft(challenge.fechaFin))
+      setTimeLeft(calculateTimeLeft(challenge.endDate))
 
       return () => clearInterval(timer)
     }
   }, [challenge])
 
   const fetchChallengeDetail = async () => {
+    // Datos de fallback por defecto
+    const fallbackChallenge = {
+      id: parseInt(id),
+      title: "Desarrollo de API REST con Node.js",
+      companyName: "TechCorp",
+      description: "Desarrollar una API REST completa para un sistema de gestión de inventarios. La API debe incluir autenticación JWT, CRUD operations para productos, categorías y proveedores, validación de datos, manejo de errores y documentación con Swagger.",
+      startDate: "2026-01-15",
+      endDate: "2026-02-15",
+      status: "ACTIVE",
+      areaTecnologica: "Backend",
+      nivelSeniority: "Semi Senior",
+      tipoReto: "api-backend",
+      criteriosEvaluacion: "Se evaluará la calidad del código, arquitectura, implementación de seguridad, testing unitario, documentación y performance de la API.",
+      areaEvaluacion: "Node.js",
+      metricasEvaluacion: ["Performance", "Casos de prueba", "Similitud de código"],
+      repositorioBase: "https://github.com/techcorp/inventory-api-base",
+      enlaces: "https://docs.techcorp.com/api-guidelines",
+      premio: "$1500",
+      tipoPremio: "dinero",
+      descripcionPremio: "Primer lugar: $1500, Segundo lugar: $800, Tercer lugar: $400",
+      numeroGanadores: 3,
+      visibilidad: "publico",
+      recursos: [
+        { nombre: "API Guidelines.pdf", tipo: "pdf", url: "#" },
+        { nombre: "Database Schema.sql", tipo: "sql", url: "#" },
+        { nombre: "Postman Collection.json", tipo: "json", url: "#" }
+      ],
+      participantes: 45,
+      estado: "activo",
+      tiempoRestante: "15 días"
+    }
+
     try {
       setLoading(true)
-      // Simulación de datos del reto - aquí iría la llamada real al API
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      setError('')
       
-      const mockChallenge = {
-        id: id,
-        titulo: "Desarrollo de API REST con Node.js",
-        empresa: "TechCorp",
-        areaTecnologica: "Backend",
-        nivelSeniority: "Semi Senior",
-        fechaInicio: "2026-01-15",
-        fechaFin: "2026-02-15",
-        tipoReto: "api-backend",
-        descripcion: "Desarrollar una API REST completa para un sistema de gestión de inventarios. La API debe incluir autenticación JWT, CRUD operations para productos, categorías y proveedores, validación de datos, manejo de errores y documentación con Swagger.",
-        criteriosEvaluacion: "Se evaluará la calidad del código, arquitectura, implementación de seguridad, testing unitario, documentación y performance de la API.",
-        areaEvaluacion: "Node.js",
-        metricasEvaluacion: ["Performance", "Casos de prueba", "Similitud de código"],
-        repositorioBase: "https://github.com/techcorp/inventory-api-base",
-        enlaces: "https://docs.techcorp.com/api-guidelines",
-        premio: "$1500",
-        tipoPremio: "dinero",
-        descripcionPremio: "Primer lugar: $1500, Segundo lugar: $800, Tercer lugar: $400",
-        numeroGanadores: 3,
-        visibilidad: "publico",
-        recursos: [
-          { nombre: "API Guidelines.pdf", tipo: "pdf", url: "#" },
-          { nombre: "Database Schema.sql", tipo: "sql", url: "#" },
-          { nombre: "Postman Collection.json", tipo: "json", url: "#" }
-        ],
-        participantes: 45,
-        estado: "activo", // activo, finalizado, proximamente
-        tiempoRestante: "15 días"
+      // Intentar obtener datos de la API de challenges
+      const allChallenges = await fetchChallenges()
+      const apiChallenge = allChallenges.find(challenge => challenge.id == id)
+      
+      if (apiChallenge) {
+        // Combinar datos de API con fallback (API tiene prioridad, fallback como default)
+        const combinedChallenge = {
+          ...fallbackChallenge, // Valores por defecto
+          ...apiChallenge,      // Datos de la API (sobrescriben los defaults si existen)
+          // Mapear algunos campos específicos para compatibilidad
+          titulo: apiChallenge.title || fallbackChallenge.title,
+          empresa: apiChallenge.companyName || fallbackChallenge.companyName,
+          descripcion: apiChallenge.description || fallbackChallenge.description,
+          fechaInicio: apiChallenge.startDate || fallbackChallenge.startDate,
+          fechaFin: apiChallenge.endDate || fallbackChallenge.endDate,
+          estado: apiChallenge.status === 'ACTIVE' ? 'activo' : 
+                  apiChallenge.status === 'COMPLETED' ? 'finalizado' : 'activo'
+        }
+        
+        setChallenge(combinedChallenge)
+      } else {
+        // Si no se encuentra en la API, usar datos de fallback
+        console.warn(`Challenge con ID ${id} no encontrado en la API, usando datos de fallback`)
+        setChallenge(fallbackChallenge)
       }
       
-      setChallenge(mockChallenge)
-    } catch (err) {
-      setError('Error al cargar el reto')
+    } catch (error) {
+      console.error('Error loading challenge:', error)
+      setError('Error al cargar el reto desde la API, mostrando datos de ejemplo.')
+      
+      // En caso de error, usar datos de fallback
+      setChallenge(fallbackChallenge)
     } finally {
       setLoading(false)
     }
@@ -219,14 +268,14 @@ export default function ChallengeDetail() {
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                 <div className="flex-1">
                   <h1 className="text-3xl font-bold text-primary-900 mb-2">
-                    {challenge.titulo}
+                    {challenge.title}
                   </h1>
                   <div className="flex flex-wrap items-center gap-4 text-sm text-primary-600">
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m4 0V9a2 2 0 011-1h4a2 2 0 011 1v12" />
                       </svg>
-                      {challenge.empresa}
+                      {challenge.companyName}
                     </span>
                     <span className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,17 +300,17 @@ export default function ChallengeDetail() {
                 </div>
                 
                 <div className="flex flex-col items-end gap-2">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    challenge.estado === 'activo' 
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
+                    challenge.status === 'ACTIVE' 
                       ? 'bg-green-100 text-green-800' 
-                      : challenge.estado === 'finalizado'
+                      : challenge.status === 'COMPLETED'
                       ? 'bg-gray-100 text-gray-800'
                       : 'bg-blue-100 text-blue-800'
                   }`}>
-                    {challenge.estado === 'activo' ? '🟢 Activo' : 
-                     challenge.estado === 'finalizado' ? '⚫ Finalizado' : '🔵 Próximamente'}
+                    {challenge.status === 'ACTIVE' ? '🟢 Activo' : 
+                     challenge.status === 'COMPLETED' ? '⚫ Finalizado' : '🔵 Próximamente'}
                   </span>
-                  {challenge.estado === 'activo' && (
+                  {challenge.status === 'ACTIVE' && (
                     <span className="text-sm text-primary-600">
                       ⏰ {challenge.tiempoRestante} restantes
                     </span>
@@ -296,7 +345,7 @@ export default function ChallengeDetail() {
               </h2>
               <div className="prose prose-primary max-w-none">
                 <p className="text-primary-700 leading-relaxed mb-4">
-                  {challenge.descripcion}
+                  {challenge.description}
                 </p>
               </div>
             </div>
