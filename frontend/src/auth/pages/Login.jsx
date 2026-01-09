@@ -18,11 +18,30 @@ export default function Login() {
     try {
       const response = await authAPI.login({ email, password })
       const data = response.data
-      // Guardar token y datos de usuario
+      
+      // Guardar token y datos de usuario de la nueva estructura
       localStorage.setItem('authToken', data.token)
-      localStorage.setItem('email', data.email)
-      localStorage.setItem('role', data.role)
-      localStorage.setItem('userId', data.userId || data.id || '1') // Guardar ID del usuario
+      
+      // Extraer datos del usuario desde userData
+      const userData = data.userData
+      localStorage.setItem('userId', userData.id.toString())
+      localStorage.setItem('email', userData.email)
+      localStorage.setItem('role', userData.role)
+      localStorage.setItem('name', userData.name)
+      localStorage.setItem('university', userData.university)
+      localStorage.setItem('major', userData.major)
+      localStorage.setItem('globalScore', userData.globalScore.toString())
+      
+      // Datos adicionales dependiendo del rol
+      if (userData.role === 'COMPANY') {
+        if (userData.companyName) localStorage.setItem('companyName', userData.companyName)
+        if (userData.sector) localStorage.setItem('sector', userData.sector)
+        if (userData.ruc) localStorage.setItem('ruc', userData.ruc)
+        if (userData.description) localStorage.setItem('description', userData.description)
+        if (userData.isVerified !== null) localStorage.setItem('isVerified', userData.isVerified.toString())
+      }
+      
+      if (userData.bio) localStorage.setItem('bio', userData.bio)
       
       // Redirigir al dashboard o home
       navigate('/')
