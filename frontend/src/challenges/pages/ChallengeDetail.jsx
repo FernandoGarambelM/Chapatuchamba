@@ -9,6 +9,14 @@ export default function ChallengeDetail() {
   const [challenge, setChallenge] = useState(null)
   const [error, setError] = useState('')
   
+  // Estado para el countdown
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  })
+  
   // Estado para la subida de solución
   const [solutionData, setSolutionData] = useState({
     repositoryUrl: '',
@@ -23,6 +31,36 @@ export default function ChallengeDetail() {
     fetchChallengeDetail()
   }, [id])
 
+  // Función para calcular el tiempo restante
+  const calculateTimeLeft = (endDate) => {
+    const difference = +new Date(endDate) - +new Date()
+    
+    if (difference > 0) {
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      }
+    }
+    
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 }
+  }
+
+  // Effect para actualizar el countdown cada segundo
+  useEffect(() => {
+    if (challenge && challenge.estado === 'activo') {
+      const timer = setInterval(() => {
+        setTimeLeft(calculateTimeLeft(challenge.fechaFin))
+      }, 1000)
+
+      // Calcular tiempo inicial
+      setTimeLeft(calculateTimeLeft(challenge.fechaFin))
+
+      return () => clearInterval(timer)
+    }
+  }, [challenge])
+
   const fetchChallengeDetail = async () => {
     try {
       setLoading(true)
@@ -35,8 +73,8 @@ export default function ChallengeDetail() {
         empresa: "TechCorp",
         areaTecnologica: "Backend",
         nivelSeniority: "Semi Senior",
-        fechaInicio: "2024-01-15",
-        fechaFin: "2024-02-15",
+        fechaInicio: "2026-01-15",
+        fechaFin: "2026-02-15",
         tipoReto: "api-backend",
         descripcion: "Desarrollar una API REST completa para un sistema de gestión de inventarios. La API debe incluir autenticación JWT, CRUD operations para productos, categorías y proveedores, validación de datos, manejo de errores y documentación con Swagger.",
         criteriosEvaluacion: "Se evaluará la calidad del código, arquitectura, implementación de seguridad, testing unitario, documentación y performance de la API.",
@@ -381,7 +419,48 @@ export default function ChallengeDetail() {
 
           {/* Panel lateral - Subir solución */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8">
+            <div className="sticky top-8 space-y-4">
+              {/* Countdown Timer */}
+              {challenge.estado === 'activo' && (
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <h3 className="text-lg font-semibold text-primary-900 mb-4 text-center">
+                    ⏰ Tiempo Restante
+                  </h3>
+                  <div className="grid grid-cols-4 gap-2">
+                    <div className="bg-primary-900 text-white rounded-lg p-2 text-center">
+                      <div className="text-xl font-bold">{timeLeft.days}</div>
+                      <div className="text-xs opacity-90">DÍAS</div>
+                    </div>
+                    <div className="bg-primary-900 text-white rounded-lg p-2 text-center">
+                      <div className="text-xl font-bold">{timeLeft.hours}</div>
+                      <div className="text-xs opacity-90">HORAS</div>
+                    </div>
+                    <div className="bg-secondary-500 text-primary-900 rounded-lg p-2 text-center">
+                      <div className="text-xl font-bold">{timeLeft.minutes}</div>
+                      <div className="text-xs font-semibold">MIN</div>
+                    </div>
+                    <div className="bg-secondary-500 text-primary-900 rounded-lg p-2 text-center">
+                      <div className="text-xl font-bold">{timeLeft.seconds}</div>
+                      <div className="text-xs font-semibold">SEG</div>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-center">
+                    <div className="text-sm text-primary-600">
+                      Fecha límite: <span className="font-semibold">
+                        {new Date(challenge.fechaFin).toLocaleDateString('es-ES', {
+                          weekday: 'long',
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        })}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
               <div className="bg-white rounded-xl shadow-sm p-6">
                 <h2 className="text-xl font-semibold text-primary-900 mb-4">
                   🚀 Subir tu Solución
