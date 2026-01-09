@@ -104,7 +104,8 @@ export const authAPI = {
   logout: async () => {
     // Limpiar token local
     localStorage.removeItem('authToken')
-    localStorage.removeItem('userData')
+    localStorage.removeItem('email')
+    localStorage.removeItem('role')
     return { success: true }
   },
 
