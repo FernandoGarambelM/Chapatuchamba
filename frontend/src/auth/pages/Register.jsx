@@ -8,9 +8,8 @@ export default function Register() {
     name: '',
     email: '',
     password: '',
-    carrera: '',
-    universidad: '',
-    resumen: ''
+    major: '',
+    university: ''
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -206,48 +205,33 @@ export default function Register() {
                   </div>
 
                   <div>
-                    <label htmlFor="carrera" className="block text-sm font-medium text-primary-700 mb-1">
+                    <label htmlFor="major" className="block text-sm font-medium text-primary-700 mb-1">
                       Carrera
                     </label>
                     <input
-                      id="carrera"
-                      name="carrera"
+                      id="major"
+                      name="major"
                       type="text"
                       required
                       className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
                       placeholder="Ej: Ingeniería de Sistemas"
-                      value={formData.carrera}
+                      value={formData.major}
                       onChange={handleInputChange}
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="universidad" className="block text-sm font-medium text-primary-700 mb-1">
+                    <label htmlFor="university" className="block text-sm font-medium text-primary-700 mb-1">
                       Universidad
                     </label>
                     <input
-                      id="universidad"
-                      name="universidad"
+                      id="university"
+                      name="university"
                       type="text"
                       required
                       className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent"
                       placeholder="Nombre de tu universidad"
-                      value={formData.universidad}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="resumen" className="block text-sm font-medium text-primary-700 mb-1">
-                      Resumen <span className="text-neutral-500 text-xs">(opcional)</span>
-                    </label>
-                    <textarea
-                      id="resumen"
-                      name="resumen"
-                      rows="3"
-                      className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent resize-none"
-                      placeholder="Cuéntanos un poco sobre ti, tus habilidades o intereses..."
-                      value={formData.resumen}
+                      value={formData.university}
                       onChange={handleInputChange}
                     />
                   </div>
