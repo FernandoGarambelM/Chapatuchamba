@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilita CORS
                 .csrf(csrf -> csrf.disable()) // Desactiva CSRF (no necesario para APIs Stateless)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Login y Registro públicos
+                        .requestMatchers("/auth/**").permitAll() // Login y Registro públicos
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Docs públicos
                         .anyRequest().authenticated() // El resto requiere Token
                 )
